@@ -1,0 +1,57 @@
+@charset 'utf-8';
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+  #main-link h2 {font-size: 24px; margin-bottom: 30px;}
+  #main-link h3 {font-size: 18px; margin-bottom: 10px;}
+  #main-link h3 + ul {overflow: hidden; margin-bottom: 20px; border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px 20px 10px 20px;}
+  #main-link h3 + ul li {float: left; margin-right: 30px; margin-bottom: 10px;}
+  #main-link h3 + ul li a {display: block; padding: 5px 10px; border-radius: 5px; border: 1px solid #e0e0e0; transition: background 0.3s;}
+  #main-link h3 + ul li a:hover {background: rgba(0, 0, 0, 0.1);}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+  #main-link h2 {font-size: 20px; margin-bottom: 20px;}
+  #main-link h3 {font-size: 15px; margin-bottom: 10px;}
+  #main-link h3 + ul {margin-bottom: 30px;}
+  #main-link h3 + ul li + li {margin-top: 5px;}
+  #main-link h3 + ul li a {display: block; padding: 5px 10px; border-radius: 5px; border: 1px solid #e0e0e0; font-size: 13px; transition: background 0.3s;}
+  #main-link h3 + ul li a:hover {background: rgba(0, 0, 0, 0.1);}
+}
+
+
+
+
+
+
+/* animation */
+@keyframes visual-show {
+  0% {opacity: 0; transform: rotate(3deg) scale(1.2);}
+  100% {opacity: 1; transform: rotate(0) scale(1);}
+}
+@keyframes visual-hide {
+  0% {opacity: 1; transform: rotate(0) scale(1);}
+  100% {opacity: 0; transform: rotate(-3deg) scale(1.2);}
+}
+
+
+
+/*
+animation 축약 표현
+animation: main-bg-animation 3s ease-out 0.1s 1 normal forwards running;
+animation: name duration timing-function delay iteration-count direction fill-mode play-state
+duration: 0(default), time, initial, inherit
+timing-function: ease(default), linear, ease-in, ease-out, ease-in-out, step-start, step-end, steps(int, start|end), cubic-bezier(n, n, n, n), initial, inherit
+deley: 0s(default), time, initial, inherit
+direction: normal(default), reverse, alternate, alternate-reverse, initial, inherit
+iteration-count: 1(default), number, infinite, initial, inherit
+fill-mode: none(default), forwards, backwards, both, initial, inherit
+play-state: running(default), paused, initial, inherit  (IE에서는 축약표현에 포함시 동작하지 않음, 별도로 사용)
+
+[최종 사용 예시]
+animation: main-bg-animation 3s ease-out 0s 1 normal forwards;
+animation-play-state: running;
+*/

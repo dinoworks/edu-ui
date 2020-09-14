@@ -1,0 +1,19 @@
+[Font Awesome 사용법]
+
+1. https://fontawesome.com/
+
+2. 최소필요파일 : css/all.min.js, webfonts 폴더 내 파일
+
+3. CSS로 넣기
+    h2::after {font-family: "Font Awesome 5 Free"; font-weight: 400; content: "\f1ea";}
+
+4. 접근성
+    - 장식인 경우 : <i class="fas fa-camera-retro" aria-hidden="true"></i>
+    - Semantics
+      <a aria-label="Delete" class="btn btn-danger" href="path/to/settings">
+          <i aria-hidden="true" class="fas fa-trash" title="Delete this item?"></i>
+      </a>
+
+5. 브라우저 : IE 10 이상 지원
+
+
