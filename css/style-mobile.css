@@ -47,12 +47,12 @@ html {font-family: 'NotoSansKR', '맑은 고딕', 'malgun gothic', '돋움', Dot
 /* module */
 section.desc > ul {border: 2px solid #e0e0e0; border-radius: 10px; padding: 10px; font-size: 14px;}
 section.desc > ul > li {position: relative; padding-left: 20px;}
-section.desc > ul > li:before {content: ''; position: absolute; left: 0; top: 6px; width: 5px; height: 5px; border: 2px solid #e0e0e0; border-radius: 20px;}
+section.desc > ul > li:before {content: ''; position: absolute; left: 0; top: 4px; width: 5px; height: 5px; border: 2px solid #e0e0e0; border-radius: 20px;}
 section.desc > ul > li + li {margin-top: 10px;}
-section.desc > ul > li > ul {margin-top: 5px;}
+section.desc > ul > li > ul {margin-top: 8px;}
 section.desc > ul > li > ul > li {position: relative; padding-left: 15px; font-size: 13px;}
-section.desc > ul > li > ul > li:before {content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 20px; background: #e0e0e0;}
-section.desc > ul > li > ul > li + li {margin-top: 1px;}
+section.desc > ul > li > ul > li:before {content: ''; position: absolute; left: 0; top: 5px; width: 5px; height: 5px; border-radius: 20px; background: #e0e0e0;}
+section.desc > ul > li > ul > li + li {margin-top: 4px;}
 
 
 

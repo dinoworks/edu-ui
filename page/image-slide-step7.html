@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>이미지 슬라이드(Step7) | 디노웍스 UI 개발 실습자료</title>
+  <meta name="description" content="디노웍스 UI 개발 실습자료 이미지 슬라이드(Step1)" />
+  <meta name="author" content="DinoWorks" />
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="../lib/fa/css/all.min.css" rel="stylesheet" />
+  <link href="../css/web-font.css" rel="stylesheet" />
+  <link href="../css/style-pc.css" rel="stylesheet" media="screen and (min-width : 1000px)" />
+  <link href="../css/style-mobile.css" rel="stylesheet" media="screen and (max-width : 999px)" />
+  <link href="../css/image-slide.css" rel="stylesheet" />
+  <script src="../js/jquery-3.5.1.min.js" charset="utf-8"></script>
+  <script src="../js/dino-common.js" charset="utf-8"></script>
+</head>
+
+<body class="sub image-slide step1">
+  <div id="wrapper">
+
+    <a href="#main" id="skip-nav">본문 바로가기</a>
+    <header id="header">
+      <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+    </header>
+
+    <main id="main">
+      <section class="ui-sample">
+        <h2>이미지 슬라이드 (Step7)</h2>
+        <div class="image-slide">
+          <div class="box">
+            <p class="dummy"><img alt="" src="../img/image_slide/main_visual_01.jpg" /></p>
+            <ul class="slide">
+              <li><a href="#"><img alt="송지아리조트 골프장 전경(오션코스)" src="../img/image_slide/main_visual_01.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 빌라 전경" src="../img/image_slide/main_visual_02.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 전경(리버코스)" src="../img/image_slide/main_visual_03.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 호텔 전경" src="../img/image_slide/main_visual_04.jpg" /></a></li>
+            </ul>
+            <ul class="indicator">
+              <!--
+              <li class="on"><a href="#">1번 비주얼</a></li>
+              <li><a href="#">2번 비주얼</a></li>
+              <li><a href="#">3번 비주얼</a></li>
+              <li><a href="#">4번 비주얼</a></li>
+              -->
+            </ul>
+          </div>
+          <p class="control">
+            <a href="#" class="prev"><img alt="이전 이미지" src="../img/image_slide/btn_left.png" /></a>
+            <a href="#" class="next"><img alt="다음 이미지" src="../img/image_slide/btn_right.png" /></a>
+            <a href="#" class="play"><i class="fas fa-pause"><span>정지</span></i><i
+                class="fas fa-play"><span>플레이</span></i></a>
+          </p>
+        </div>
+
+        <div class="image-slide">
+          <div class="box">
+            <p class="dummy"><img alt="" src="../img/image_slide/main_visual_01.jpg" /></p>
+            <ul class="slide">
+              <li><a href="#"><img alt="송지아리조트 골프장 전경(오션코스)" src="../img/image_slide/main_visual_01.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 빌라 전경" src="../img/image_slide/main_visual_02.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 전경(리버코스)" src="../img/image_slide/main_visual_03.jpg" /></a></li>
+              <li><a href="#"><img alt="송지아리조트 골프장 호텔 전경" src="../img/image_slide/main_visual_04.jpg" /></a></li>
+            </ul>
+            <ul class="indicator">
+              <!--
+              <li class="on"><a href="#">1번 비주얼</a></li>
+              <li><a href="#">2번 비주얼</a></li>
+              <li><a href="#">3번 비주얼</a></li>
+              <li><a href="#">4번 비주얼</a></li>
+              -->
+            </ul>
+          </div>
+          <p class="control">
+            <a href="#" class="prev"><img alt="이전 이미지" src="../img/image_slide/btn_left.png" /></a>
+            <a href="#" class="next"><img alt="다음 이미지" src="../img/image_slide/btn_right.png" /></a>
+            <a href="#" class="play"><i class="fas fa-pause"><span>정지</span></i><i
+                class="fas fa-play"><span>플레이</span></i></a>
+          </p>
+        </div>
+      </section>
+      <section class="desc">
+        <h2>설명</h2>
+        <ul>
+          <li>컨트롤 요소별 기능 개발
+            <ul>
+              <li>N번 이미지 보기</li>
+              <li>이전 / 다음 이미지 보기</li>
+              <li>타이머 컨트롤</li>
+              <li>이전/다음 버튼 애니메이션 효과</li>
+            </ul>
+          </li>
+          <li>Step5의 코드 전체를 객체화 (라이브러리)</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+      <p class="copyright">2020 DinoWorks Inc.</p>
+    </footer>
+  </div> <!-- #wrapper  -->
+
+  <script>
+    'use strict';
+
+    // 이미지 슬라이드 적용(객체)
+    var slide = new ImageSlider('div.image-slide', {
+      first: 3,
+      status: false
+    });
+
+
+    // 이미지 슬라이드 테스트(외부 콘트롤)
+    $('div.image-slide:eq(1) a.prev').on('click', function() {
+      alert(slide.getNumSlide());
+    });
+    $('div.image-slide:eq(1) a.play').on('click', function() {
+      if (slide.getTimerStatus() === true) {
+        slide.stopTimer();
+      } else {
+        slide.startTimer();
+      }
+    });
+
+    function ImageSlider(selector, options) {
+      var $selector = $(selector).eq(0);
+      var numSlide = $selector.find('ul.slide li').length;
+      var slideNow = 0;
+      var slidePrev = 0;
+      var slideNext = 0;
+      var firstSlide = (options !== undefined && options.first !== undefined) ? options.first : 1;
+      var timerId = '';
+      var isTimerOn = (options !== undefined && options.status !== undefined) ? options.status : true;
+      var timerSpeed = (options !== undefined && options.speed !== undefined) ? options.speed : 3000;
+
+      // 상태확인
+      if ($selector.length <= 0) {
+        alert('대상이 명확히 선택되지 않았습니다. selector를 다시 확인해 주세요');
+        return false;
+      }
+
+      // 슬라이드 상태 초기화
+      $selector.find('ul.slide li').each(function(i) {
+        $(this).css({'display': 'block', 'left': (i * 100) + '%'});
+        $selector.find('ul.indicator').append('<li><a href="#">' + (i + 1) + '번 슬라이드</a></li>\n');
+      });
+      if (isTimerOn === true) {
+        $selector.find('p.control a.play').addClass('on');
+      } else {
+        $selector.find('p.control a.play').removeClass('on');
+      }
+      showSlide(firstSlide);
+
+      // 이벤트 동작
+      $selector.find('ul.indicator li a').on('click', function() {
+        var index = $selector.find('ul.indicator li').index($(this).parent());
+        showSlide(index + 1);
+      });
+
+      $selector.find('p.control a.prev').on('click', function() {
+        $(this).find('img').stop(true).animate({'left': '-10px'}, 50).animate({'left': 0}, 100);
+        showSlide(slidePrev);
+      });
+
+      $selector.find('p.control a.next').on('click', function() {
+        $(this).find('img').stop(true).animate({'right': '-10px'}, 50).animate({'right': 0}, 100);
+        showSlide(slideNext);
+      });
+
+      $selector.find('p.control a.play').on('click', function() {
+        if (isTimerOn === true) {
+          stopTimer();
+        } else {
+          startTimer();
+        }
+      });
+
+      // 함수 정의
+      function showSlide(n) {
+        clearTimeout(timerId);
+        if (slideNow === 0) {
+          $selector.find('ul.slide').css({'transition': 'none', 'left': -((n - 1) * 100) + '%'});
+        } else {
+          $selector.find('ul.slide').css({'transition': 'left 0.3s', 'left': -((n - 1) * 100) + '%'});
+        }
+        $selector.find('ul.indicator li').removeClass('on');
+        $selector.find('ul.indicator li:eq(' + (n - 1) + ')').addClass('on');
+        slideNow = n;
+        slidePrev = (n <= 1) ? numSlide : n - 1;
+        slideNext = (n >= numSlide) ? 1 : n + 1;
+        if (isTimerOn === true) {
+          timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+        }
+      }
+
+      function startTimer() {
+        if (isTimerOn === true) return false;    // 이미 켜진 상태면 동작하지 않은(중복동작 방지)
+        timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+        isTimerOn = true;
+        $selector.find('p.control a.play').addClass('on');
+      }
+
+      function stopTimer() {
+        clearTimeout(timerId);
+        isTimerOn = false;
+        $selector.find('p.control a.play').removeClass('on');
+      }
+
+
+      // 객체용 외부 interface 정의
+      this.getNumSlide = function() {
+        return numSlide;
+      }
+
+      this.getTimerStatus = function() {
+        return isTimerOn;
+      }
+
+      this.getTimerSpeed = function() {
+        return timerSpeed;
+      }
+
+      this.setTimerSpeed = function(speed) {
+        timerSpeed = speed;
+      }
+
+      this.startTimer = function() {
+        startTimer();
+      }
+
+      this.stopTimer = function() {
+        stopTimer();
+      }
+
+      this.showSlide = function(n) {
+        showSlide(n);
+      }
+
+    }   // end of function
+
+  </script>
+</body>
+
+</html>
