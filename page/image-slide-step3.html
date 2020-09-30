@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>이미지 슬라이드(Step1) | 디노웍스 UI 개발 실습자료</title>
+  <title>이미지 슬라이드(Step3) | 디노웍스 UI 개발 실습자료</title>
   <meta name="description" content="디노웍스 UI 개발 실습자료 이미지 슬라이드(Step1)" />
   <meta name="author" content="DinoWorks" />
   <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -28,7 +28,7 @@
 
     <main id="main">
       <section class="ui-sample">
-        <h2>이미지 슬라이드 (Step1)</h2>
+        <h2>이미지 슬라이드 (Step3)</h2>
         <div class="image-slide">
           <div class="box">
             <p class="dummy"><img alt="" src="../img/image_slide/main_visual_01.jpg" /></p>
@@ -62,7 +62,7 @@
               <li>이전 / 다음 이미지 보기</li>
             </ul>
           </li>
-          <li>순환형으로 계속 이미지 표시 (마지막 이미지에서 다음 → 첫 이미지)</li>
+          <li>Step2의 소스에 변수를 추가하여 구현</li>
         </ul>
       </section>
     </main>
@@ -76,31 +76,35 @@
   <script>
     'use strict';
 
+    var numSlide = $('div.image-slide ul.slide li').length;
+    var slideNow = 0;
+    var slidePrev = 0;
+    var slideNext = 0;
+
+    showSlide(1);
+
     $('div.image-slide ul.indicator li a').on('click', function() {
       var index = $('div.image-slide ul.indicator li').index($(this).parent());
-      $('div.image-slide ul.slide li').css({'display': 'none'});
-      $('div.image-slide ul.slide li:eq(' + index + ')').css({'display': 'block'});
-      $('div.image-slide ul.indicator li').removeClass('on');
-      $('div.image-slide ul.indicator li:eq(' + index + ')').addClass('on');
+      showSlide(index + 1);
     });
 
     $('div.image-slide p.control a.prev').on('click', function() {
-      var index = $('div.image-slide ul.indicator li').index($('div.image-slide ul.indicator li.on'));
-      index = (index <= 0) ? 3 : index - 1;
-      $('div.image-slide ul.slide li').css({'display': 'none'});
-      $('div.image-slide ul.slide li:eq(' + index + ')').css({'display': 'block'});
-      $('div.image-slide ul.indicator li').removeClass('on');
-      $('div.image-slide ul.indicator li:eq(' + index + ')').addClass('on');
+      showSlide(slidePrev);
     });
 
     $('div.image-slide p.control a.next').on('click', function() {
-      var index = $('div.image-slide ul.indicator li').index($('div.image-slide ul.indicator li.on'));
-      index = (index >= 3) ? 0 : index + 1;
-      $('div.image-slide ul.slide li').css({'display': 'none'});
-      $('div.image-slide ul.slide li:eq(' + index + ')').css({'display': 'block'});
-      $('div.image-slide ul.indicator li').removeClass('on');
-      $('div.image-slide ul.indicator li:eq(' + index + ')').addClass('on');
+      showSlide(slideNext);
     });
+
+    function showSlide(n) {
+      $('div.image-slide ul.slide li').css({'display': 'none'});
+      $('div.image-slide ul.slide li:eq(' + (n - 1) + ')').css({'display': 'block'});
+      $('div.image-slide ul.indicator li').removeClass('on');
+      $('div.image-slide ul.indicator li:eq(' + (n - 1) + ')').addClass('on');
+      slideNow = n;
+      slidePrev = (n <= 1) ? numSlide : n - 1;
+      slideNext = (n >= numSlide) ? 1 : n + 1;
+    }
 
   </script>
 </body>
