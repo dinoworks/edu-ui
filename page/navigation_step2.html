@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>네비게이션 (Step1) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : 네비게이션 (Step1)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/reset_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/reset_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/navigation.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub product system">
+        <div id="wrapper">
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="navigation_step2.html"><img alt="FOLZEN | (주)폴젠코리아" src="../img/navigation/logo_white.png" /><img alt="FOLZEN | (주)폴젠코리아" src="../img/navigation/logo_gray.png" /></a></h1>
+                <a href="#" class="menu mobile"><span>메뉴 열기/닫기</span></a>
+                <nav id="gnb">
+                    <ul>
+                        <li class="sub1" data-menu="intro">
+                            <a href="navigation_step2.html">폴젠코리아</a>
+                            <ul>
+                                <li data-menu="company"><a href="navigation_step2.html">회사개요</a></li>
+                                <li data-menu="history"><a href="navigation_step2.html">연혁</a></li>
+                                <li data-menu="organization"><a href="navigation_step2.html">조직도</a></li>
+                                <li data-menu="cert"><a href="navigation_step2.html">인증현황</a></li>
+                                <li data-menu="view"><a href="navigation_step2.html">회사전경</a></li>
+                                <li data-menu="way"><a href="navigation_step2.html">오시는 길</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub2" data-menu="product">
+                            <a href="navigation_step2.html">제품안내</a>
+                            <ul>
+                                <li data-menu="insulation"><a href="navigation_step2.html">단열 폴딩도어</a></li>
+                                <li data-menu="smart"><a href="navigation_step2.html">스마트 폴딩도어</a></li>
+                                <li data-menu="expansion"><a href="navigation_step2.html">폴딩도어 확장시스템</a></li>
+                                <li data-menu="system"><a href="navigation_step2.html">시스템 도어</a></li>
+                                <li data-menu="sliding"><a href="navigation_step2.html">슬라이딩 도어</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub3" data-menu="pr">
+                            <a href="navigation_step2.html">홍보센터</a>
+                            <ul>
+                                <li data-menu="news"><a href="navigation_step2.html">폴젠코리아 소식</a></li>
+                                <li data-menu="video"><a href="navigation_step2.html">홍보영상</a></li>
+                                <li data-menu="sponsor"><a href="navigation_step2.html">협찬사례</a></li>
+                                <li data-menu="customer"><a href="navigation_step2.html">주요고객사</a></li>
+                            </ul>
+                        </li>
+                        <li class="sub4" data-menu="construction"><a href="navigation_step2.html">시공사례</a></li>
+                        <li class="sub5" data-menu="data">
+                            <a href="navigation_step2.html">자료실</a>
+                            <ul>
+                                <li data-menu="color"><a href="navigation_step2.html">색상표</a></li>
+                                <li data-menu="open"><a href="navigation_step2.html">개폐방식</a></li>
+                                <li data-menu="drawing"><a href="navigation_step2.html">상세도면</a></li>
+                                <li data-menu="assembly"><a href="navigation_step2.html">조립영상</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <span class="bar"></span>
+                </nav>
+                <ul id="top-menu">
+                    <li><a href="/page/common_support.php"><i class="fas fa-headset"></i>온라인 지원</a></li>
+                    <li><a href="/en/index.php"><i class="fas fa-globe"></i>ENG</a></li>
+                </ul>
+            </header>
+            
+            <main id="main">
+                <section id="main-visual">
+                    <ul>
+                        <li><img alt="" src="../img/navigation/main_visual_01.jpg" /></li>
+                        <li><img alt="" src="../img/navigation/main_visual_02.jpg" /></li>
+                        <li><img alt="" src="../img/navigation/main_visual_03.jpg" /></li>
+                        <li><img alt="" src="../img/navigation/main_visual_04.jpg" /></li>
+                        <li><img alt="" src="../img/navigation/main_visual_05.jpg" /></li>
+                        <li><img alt="" src="../img/navigation/main_visual_06.jpg" /></li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+            </footer>
+        </div> <!-- #wrapper  -->
+<script>
+'use strict';
+
+setGNB();
+function setGNB() {
+    checkCurrentMenu();
+    
+    $('#gnb > ul > li > a').on('mouseenter focus', function() {
+        if ($(window).width() <= 850) return false;  // 모바일 미동작
+        var barLeft = $(this).position().left;
+        var barWidth = $(this).outerWidth();
+        $('#gnb > ul > li > ul').css({'display': 'none'});
+        $(this).next().css({'display': 'block'});
+        if ($(this).parent().find('ul').length >= 1) {
+            $('#header').addClass('open');
+        } else {
+            $('#header').removeClass('open');
+        }
+        $('#header span.bar').css({'left': barLeft + 'px', 'width': barWidth + 'px'});
+    });
+    $('#header').on('mouseleave', function() {
+        if ($(window).width() <= 850) return false;  // 모바일 미동작
+        $('#gnb > ul > li > ul').css({'display': 'none'});
+        $('#header').removeClass('open');
+        $('#header span.bar').css({'left': 0, 'width': 0});
+    });
+    
+    checkHeader();
+    $(window).on('scroll', function() {
+        checkHeader();
+    });
+    
+    function checkCurrentMenu() {
+        var bodyClass = $('body').attr('class');
+        if (bodyClass === 'main') return false;
+        var classArray = bodyClass.split(' ');
+        
+        $('#gnb > ul > li').each(function() {
+            if ($(this).attr('data-menu') === classArray[1]) {
+                $(this).addClass('on');
+            } else {
+                $(this).removeClass('on');
+            }
+        });
+        
+        $('#gnb > ul > li.on > ul > li').each(function() {
+            if ($(this).attr('data-menu') === classArray[2]) {
+                $(this).addClass('on');
+            } else {
+                $(this).removeClass('on');
+            }
+        });
+    }
+    
+    function checkHeader() {
+        var scrollAmt = $(document).scrollTop();
+        if (scrollAmt > 120) {
+            $('#header').addClass('white');
+        } else {
+            $('#header').removeClass('white');
+        }
+    }
+    
+    // 모바일용
+    // 서브메뉴 유무에 따른 icon 삽입
+    $('#gnb > ul > li').each(function() {
+        if ($(this).find('ul').length > 0) {
+            $(this).find('> a').append('<i class="fas fa-plus mobile"><span>열기/닫기</span></i>');
+        }
+    });
+    $('#gnb > ul > li > ul > li > a').each(function() {
+        $(this).append('<i class="fas fa-chevron-right mobile"></i>')
+    });
+    
+    // 서브메뉴 열기/닫기
+    $('#header a.menu').on('click', function() {
+        $(this).toggleClass('open');
+        $('#gnb, #top-menu').toggleClass('open');
+        if ($('#gnb').attr('class') === 'open') {
+            $('#header').addClass('white');
+            if ($('#gnb > ul > li.on ul').length > 0) {  // 서브메뉴가 있는 경우 클릭(열림)
+                $('#gnb > ul > li.on > a').trigger('click');
+            }
+        } else {
+            $(window).trigger('scroll');
+        }
+    });
+    
+    $('#gnb > ul > li > a').on('click', function(e) {
+        // 모바일에서만 동작
+        if ($(window).width() <= 850) {  
+            if ($(this).parent().find('ul').length > 0) {  // 서브메뉴가 있는 경우
+                var subHeight = 0;
+                e.preventDefault();
+                $(this).parent().siblings().find('ul').css({'height': 0});
+                $(this).parent().siblings().find('> a i').attr({'class': 'fas fa-plus mobile'});
+                $(this).next().find('li').each(function() {
+                    subHeight += $(this).outerHeight(true);
+                });
+                $(this).next().css({'height': subHeight + 'px'});
+                $(this).find('i').attr({'class': 'fas fa-minus mobile'});
+            }
+        }
+    });
+    
+    // 반응형 전환시 처리
+    $(window).on('resize', function() {
+        if ($(window).width() > 850) {
+            $('#gnb > ul > li > ul').css({'display': 'none'});
+        } else {
+            $('#gnb > ul > li > ul').css({'display': 'block'});
+        }
+    });
+}
+
+
+</script>
+    </body>
+</html>
+
+

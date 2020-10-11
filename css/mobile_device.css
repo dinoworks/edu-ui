@@ -1,0 +1,16 @@
+@charset 'utf-8';
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    ul.api li + li {margin-top: 30px;}
+    a.btn {display: inline-block; padding: 10px 30px; border: 1px solid #e0e0e0; border-radius: 3px;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    ul.api li + li {margin-top: 30px;}
+    a.btn {display: inline-block; padding: 10px 30px; border: 1px solid #e0e0e0; border-radius: 3px;}
+}
+

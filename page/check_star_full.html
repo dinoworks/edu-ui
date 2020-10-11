@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>별점체크 (Full) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : 별점체크 (Full)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/check_star.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub mobile-multi rotate">
+        <div id="wrapper">
+            
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>별점체크 (Full)</h2>
+                    
+                    <form name="form1" action="../src/check_star.php" method="post">
+                        <ul class="movie-list">
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_01.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="24" />
+                                <input type="hidden" name="movie_score[]" value="2" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_02.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="18" />
+                                <input type="hidden" name="movie_score[]" value="3" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_03.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="10" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_04.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="4" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_05.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="2" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_06.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="8" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_07.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="84" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_08.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="57" />
+                                <input type="hidden" name="movie_score[]" value="4" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_09.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="38" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                            <li>
+                                <p class="poster"><img alt="000" src="../img/star/movie_10.jpg" /></p>
+                                <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span class="ir">0점</span></p>
+                                <input type="hidden" name="movie_seq[]" value="45" />
+                                <input type="hidden" name="movie_score[]" value="0" />
+                            </li>
+                        </ul>
+                        <div class="button-box">
+                            <button type="submit">저장하기</button>
+                        </div>
+                    </form>
+                </section>
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>UI 함수화 및 파라미터 설정 기능 적용</li>
+                        <li>다수의 UI 적용</li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+                
+        </div> <!-- #wrapper  -->
+        
+<script>
+'use strict';
+
+
+setCheckStar('ul.movie-list li');
+
+function setCheckStar(selector) {
+    $(selector).each(function() {
+        var $selector = $(this).find('p.star');
+        var $selectorScore = $(this).find('[name="movie_score[]"]');
+        var starPoint = Number($selectorScore.val());
+        
+        // 초기 상태 입력
+        $selector.find('a:eq(' + starPoint + ')').prevAll().addClass('full');
+        $selector.find('span.ir').text(starPoint + '점');
+        
+        // 별점 체크
+        $selector.find('a').on('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            var score = $selector.find('a').index($(this)) + 1;
+            $(this).prevAll().addClass('full');
+            $(this).addClass('full');
+            $(this).nextAll().removeClass('full');
+            $selectorScore.val(score);
+            $selector.find('span.ir').text(score + '점');
+        });
+        
+        // 별점 취소/삭제
+        $(this).on('click', function() {
+            var score = 0;
+            $(this).find('p.star a').removeClass('full');
+            $selectorScore.val(score);
+            $selector.find('span.ir').text(score + '점');
+        });
+    });
+}
+
+</script>
+    </body>
+</html>
+
+

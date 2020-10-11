@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>CSS3 3D Transform (step1) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : CSS3 3D Transform (step1)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/css3_3d.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub banner-slide css3">
+        <div id="wrapper">
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>CSS3 3D Transform (step1)</h2>
+                    <div class="effect-box">
+                        <ul id="gnb">
+                            <li class="box1"><a href="#">1</a></li>
+                            <li class="box2"><a href="#">2</a></li>
+                            <li class="box3"><a href="#">3</a></li>
+                            <li class="box4"><a href="#">4</a></li>
+                            <li class="box5"><a href="#">5</a></li>
+                            <li class="box6"><a href="#">6</a></li>
+                        </ul>
+                    </div>
+                </section>
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>Step2의 내용을 함수 형태로 정리</li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+        </div> <!-- #wrapper  -->
+<script>
+'use strict';
+
+$('div.effect-box').on('click', function() {
+    $('#gnb').toggleClass('rotate');
+});
+$('#gnb > li > a').on('click', function(e) {
+    e.stopPropagation();
+    alert($(this).text());
+});
+    
+    
+    
+</script>
+    </body>
+</html>
+
+

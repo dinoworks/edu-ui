@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    ul.card {position: relative; border-bottom: 2px solid #e0e0e0;}
+    ul.card > li {position: absolute; left: 0; top: 0; overflow: hidden; width: 18%; padding-bottom: 10px; border-radius: 5px; background: #ffffff; border: 1px solid #e0e0e0; box-sizing: border-box; transition: all 0.5s; box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.05);}
+    ul.card > li * {display: block;}
+    ul.card > li span.img {border-bottom: 1px solid #e0e0e0;}
+    ul.card > li span.img img {width: 100%;}
+    ul.card > li em.title {font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 5px 8px;}
+    ul.card > li span.desc {max-height: 4.5em; line-height: 1.6em; font-size: 12px; padding: 5px 8px; overflow: hidden;}
+    
+    @media screen and (max-width: 1100px) {
+        ul.card > li {width: 22%;}
+    }
+    @media screen and (max-width: 950px) {
+        ul.card > li {width: 30%;}
+    }
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    ul.card {position: relative; border-bottom: 2px solid #e0e0e0;}
+    ul.card > li {position: absolute; left: 0; top: 0; overflow: hidden; width: 30%; padding-bottom: 10px; border-radius: 5px; background: #ffffff; border: 1px solid #e0e0e0; box-sizing: border-box; transition: all 0.5s; box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.05);}
+    ul.card > li * {display: block;}
+    ul.card > li span.img {border-bottom: 1px solid #e0e0e0;}
+    ul.card > li span.img img {width: 100%;}
+    ul.card > li em.title {font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 5px 8px;}
+    ul.card > li span.desc {max-height: 4.5em; line-height: 1.6em; font-size: 12px; padding: 5px 8px; overflow: hidden;}
+    @media screen and (max-width: 600px) {
+        ul.card > li {width: 45%;}
+    }
+}

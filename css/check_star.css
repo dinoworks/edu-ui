@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* CSS */
+@media screen and (min-width: 851px) {
+    ul.movie-list {text-align: center;}
+    ul.movie-list li {width: 200px; background: #eeeeee; display: inline-block; margin: 0 10px 20px 10px; box-sizing: border-box; padding: 5px 5px 50px 5px; position: relative;}
+    ul.movie-list li p.star {position: absolute; left: 0; bottom: 5px; width: 100%; text-align: center; font-size: 30px; overflow: hidden;}
+    ul.movie-list li p.star a {position: relative;}
+    ul.movie-list li p.star span.ir {position: absolute; left: -9999px;}
+    ul.movie-list li p.star a:after {content: '★'; color: #ffcc00; position: absolute; left: 0; top: 0; width: 0; overflow: hidden;}
+    ul.movie-list li p.star a.half:after {width: 50%;}
+    ul.movie-list li p.star a.full:after {width: 100%;}
+}
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    ul.movie-list {text-align: center;}
+    ul.movie-list li {width: 160px; background: #eeeeee; display: inline-block; margin: 0 5px 20px 5px; box-sizing: border-box; padding: 5px 5px 50px 5px; position: relative;}
+    ul.movie-list li p.star {position: absolute; left: 0; bottom: 5px; width: 100%; text-align: center; font-size: 30px; overflow: hidden;}
+    ul.movie-list li p.star a {position: relative;}
+    ul.movie-list li p.star span.ir {position: absolute; left: -9999px;}
+    ul.movie-list li p.star a:after {content: '★'; color: #ffcc00; position: absolute; left: 0; top: 0; width: 0; overflow: hidden;}
+    ul.movie-list li p.star a.half:after {width: 50%;}
+    ul.movie-list li p.star a.full:after {width: 100%;}
+}

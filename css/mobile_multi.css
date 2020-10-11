@@ -1,0 +1,28 @@
+@charset 'utf-8';
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    div.content-box {border: 2px solid #e0e0e0; margin: 10px; overflow: hidden; position: relative;}
+    div.content-box img {width: 100%;}
+    div.content-box a.reset {position: absolute; right: 10px; top: 10px; width: 30px; height: 30px; border: 1px solid #cccccc; background: rgba(0, 0, 0, 0.3); color: #ffffff; box-sizing: border-box; text-align: center; line-height: 28px; font-size: 16px;}
+    div.event-type {border: 2px solid #e0e0e0; margin: 10px; overflow: hidden; background: yellow; min-height: 200px; position: relative;}
+
+    div.touch-box {margin: 10px; border: 1px solid #e0e0e0; overflow: hidden; position: relative;}
+    div.touch-box div.content {}
+    div.touch-box span.center {position: absolute; left: 0; top: 0; width: 4px; height: 4px; background: #ff0000; z-index: 100;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    div.content-box {border: 2px solid #e0e0e0; margin: 10px; overflow: hidden; position: relative;}
+    div.content-box img {width: 100%;}
+    div.content-box a.reset {position: absolute; right: 10px; top: 10px; width: 30px; height: 30px; border: 1px solid #cccccc; background: rgba(0, 0, 0, 0.3); color: #ffffff; box-sizing: border-box; text-align: center; line-height: 28px; font-size: 16px;}
+    div.event-type {border: 2px solid #e0e0e0; margin: 10px; overflow: hidden; background: yellow; min-height: 200px; position: relative;}
+
+    div.touch-box {margin: 10px; border: 1px solid #e0e0e0; overflow: hidden; position: relative;}
+    div.touch-box div.content {}
+    div.touch-box span.center {position: absolute; left: 0; top: 0; width: 4px; height: 4px; background: #ff0000; z-index: 100;}
+}
+

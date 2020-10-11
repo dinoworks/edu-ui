@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+  <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+  <title>배너 슬라이드(무한) | 디노웍스(주) UI 라이브러리</title>
+  <meta name="description" content="디노웍스(주) UI 라이브러리 : 배너 슬라이드(무한)" />
+  <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  <link href="../lib/fa/css/all.min.css" rel="stylesheet" />
+  <link href="../css/web-font.css" rel="stylesheet" />
+  <link href="../css/style-pc.css" rel="stylesheet" media="screen and (min-width : 850px)" />
+  <link href="../css/style-mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+  <link href="../css/banner-slide-infinite.css" rel="stylesheet" />
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <script src="../js/dino-common.js"></script>
+</head>
+
+<body class="sub banner-slide step5">
+  <div id="wrapper">
+    <a href="#main" id="skip-nav">본문 바로가기</a>
+    <header id="header">
+      <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+    </header>
+
+    <main id="main">
+      <section class="ui-sample">
+        <h2>배너 슬라이드 (무한)</h2>
+
+        <div class="banner-infinite">
+          <div class="box">
+            <ul class="banner">
+              <li><a href="banner_infinite.html"><img alt="" src="../img/banner_slide/slide_01.jpg" /><em>이미지1</em></a></li>
+              <li><a href="banner_infinite.html"><img alt="" src="../img/banner_slide/slide_02.jpg" /><em>이미지2</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_03.jpg" /><em>이미지3</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_04.jpg" /><em>이미지4</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_01.jpg" /><em>이미지5</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_02.jpg" /><em>이미지6</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_03.jpg" /><em>이미지7</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_04.jpg" /><em>이미지8</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_01.jpg" /><em>이미지9</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_02.jpg" /><em>이미지10</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_03.jpg" /><em>이미지11</em></a></li>
+              <li><a href="#"><img alt="" src="../img/banner_slide/slide_04.jpg" /><em>이미지12</em></a></li>
+            </ul>
+            <ul class="indicator">
+
+            </ul>
+            <a href="#" class="play"><i class="fas fa-pause"><span>정지</span></i><i
+                class="fas fa-play"><span>플래이</span></i></a>
+          </div>
+          <p class="control">
+            <a href="#" class="prev"><img alt="" src="../img/common/btn_left.png" /></a>
+            <a href="#" class="next"><img alt="" src="../img/common/btn_right.png" /></a>
+          </p>
+        </div>
+
+      </section>
+      <section class="desc">
+        <h2>설명</h2>
+        <ul>
+          <li>무한배너</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+      <p class="copyright">2020 DinoWorks Inc.</p>
+    </footer>
+  </div> <!-- #wrapper  -->
+  <script>
+    'use strict';
+
+
+    setBannerInfinite('div.banner-infinite');
+
+    function setBannerInfinite(selector) {
+      var numBanner = $(selector).find('ul.banner li').length;
+      var bannerNow = 0;
+      var bannerPrev = 0;
+      var bannerNext = 0;
+      var widthBox = $(selector).find('> div.box').innerWidth();
+      var widthBar = 0;
+      var offsetLeft = 0;
+      var minNumSide = 0;
+      var timerId = null;
+      var isTimerOn = true;
+      var timerSpeed = 3000;
+
+      $(selector).find('ul.banner li').each(function (i) {
+        widthBar += $(this).outerWidth(true);
+        $(this).attr({
+          'data-num': (i + 1)
+        });
+        $(selector).find('ul.indicator').append('<li><a href="#">' + (i + 1) + '번 배너</a></li>');
+      });
+      $(selector).find('ul.banner').css({
+        'width': widthBar + 'px'
+      });
+      if (isTimerOn === true) {
+        $(selector).find('a.play').addClass('on');
+      } else {
+        $(selector).find('a.play').removeClass('on');
+      }
+      checkMinNumSide();
+      showBanner(1);
+
+      // 이벤트
+      $(selector).find('ul.indicator li a').on('click', function () {
+        var index = $(selector).find('ul.indicator li').index($(this).parent());
+        showBanner(index + 1);
+      });
+      $(selector).find('a.prev').on('click', function () {
+        showBanner(bannerPrev);
+      });
+      $(selector).find('a.next').on('click', function () {
+        showBanner(bannerNext);
+      });
+      $(selector).find('a.play').on('click', function () {
+        if (isTimerOn === true) {
+          clearTimeout(timerId);
+          $(this).removeClass('on');
+          isTimerOn = false;
+        } else {
+          timerId = setTimeout(function () {
+            showBanner(bannerNext);
+          }, timerSpeed);
+          $(this).addClass('on');
+          isTimerOn = true;
+        }
+      });
+      $(window).on('resize', function () {
+        widthBox = $(selector).find('> div.box').innerWidth();
+        checkMinNumSide(bannerNow);
+        showBanner(bannerNow);
+      });
+
+      function showBanner(n) {
+        clearTimeout(timerId);
+        checkVisibility(n);
+        var $bannerNow = null;
+        $(selector).find('ul.banner li').each(function () {
+          if (Number($(this).attr('data-num')) === n) {
+            $bannerNow = $(this);
+            return false;
+          }
+        });
+        offsetLeft = -$bannerNow.position().left + (widthBox / 2) - $bannerNow.outerWidth() / 2;
+        if (bannerNow === 0) {
+          $(selector).find('ul.banner').css({
+            'transition': 'none',
+            'left': offsetLeft + 'px'
+          });
+        } else {
+          $(selector).find('ul.banner').css({
+            'transition': 'left 0.5s',
+            'left': offsetLeft + 'px'
+          });
+        }
+        $(selector).find('ul.banner li').removeClass('on');
+        $bannerNow.addClass('on');
+        $(selector).find('ul.indicator li').removeClass('on');
+        $(selector).find('ul.indicator li:eq(' + (n - 1) + ')').addClass('on');
+        bannerNow = n;
+        bannerPrev = (n - 1) < 1 ? numBanner : n - 1;
+        bannerNext = (n + 1) > numBanner ? 1 : n + 1;
+        if (isTimerOn === true) {
+          timerId = setTimeout(function () {
+            showBanner(bannerNext);
+          }, timerSpeed);
+        }
+      }
+
+      function checkMinNumSide() {
+        var widthBox = $(selector).find('> div.box').innerWidth();
+        var sumWidth = 0;
+        $(selector).find('ul.banner li').each(function (i) {
+          sumWidth += $(this).outerWidth(true);
+          if (sumWidth > widthBox) {
+            minNumSide = Math.floor((i + 1) / 2);
+            return false;
+          }
+        });
+        //console.log(minNumSide);
+      }
+
+      // 앞뒤로 minNumSide 갯수 만큼의 banner가 존재하도록 재배치
+      function checkVisibility(n) {
+        var $bannerNow = null;
+        $(selector).find('ul.banner li').each(function () {
+          if (Number($(this).attr('data-num')) === n) {
+            $bannerNow = $(this);
+            return false;
+          }
+        });
+        for (var i = $bannerNow.prevAll().length; i < minNumSide; i++) {
+          $bannerNow.parent().prepend($(selector).find('ul.banner li:last').clone());
+          $(selector).find('ul.banner li:last').remove();
+          offsetLeft -= $(selector).find('ul.banner li:eq(0)').outerWidth(true);
+          $(selector).find('ul.banner').css({
+            'transition': 'none',
+            'left': offsetLeft + 'px'
+          });
+          console.log(offsetLeft);
+        }
+        for (var i = $bannerNow.nextAll().length; i < minNumSide; i++) {
+          $bannerNow.parent().append($(selector).find('ul.banner li:eq(0)').clone());
+          $(selector).find('ul.banner li:eq(0)').remove();
+          offsetLeft += $(selector).find('ul.banner li:last').outerWidth(true);
+          $(selector).find('ul.banner').css({
+            'transition': 'none',
+            'left': offsetLeft + 'px'
+          });
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

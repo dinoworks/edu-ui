@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>이미지 슬라이드(CSS3) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : 이미지 슬라이드(CSS3)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/image_slide.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub image-slide step5">
+        <div id="wrapper">
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>이미지 슬라이드 (CSS3)</h2>
+                    <div class="image-slide">
+                        <div class="box">
+                            <p class="dummy"><img alt="" src="../img/image_slide/main_visual_01.jpg" /></p>
+                            <ul class="slide">
+                                <li><a href="#"><img alt="송지아리조트 골프장 전경(오션코스)" src="../img/image_slide/main_visual_01.jpg" /></a></li>
+                                <li><a href="#"><img alt="송지아리조트 골프장 빌라 전경" src="../img/image_slide/main_visual_02.jpg" /></a></li>
+                                <li><a href="#"><img alt="송지아리조트 골프장 전경(리버코스)" src="../img/image_slide/main_visual_03.jpg" /></a></li>
+                                <li><a href="#"><img alt="송지아리조트 골프장 호텔 전경" src="../img/image_slide/main_visual_04.jpg" /></a></li>
+                            </ul>
+                            <ul class="indicator">
+                                <!--
+                                <li class="on"><a href="#">1번 비주얼</a></li>
+                                <li><a href="#">2번 비주얼</a></li>
+                                <li><a href="#">3번 비주얼</a></li>
+                                <li><a href="#">4번 비주얼</a></li>
+    -->
+                            </ul>
+                        </div>
+                        <p class="control">
+                            <a href="#" class="prev"><img alt="이전 이미지" src="../img/image_slide/btn_left.png" /></a>
+                            <a href="#" class="next"><img alt="다음 이미지" src="../img/image_slide/btn_right.png" /></a>
+                            <a href="#" class="play"><i class="fas fa-pause"><span>정지</span></i><i class="fas fa-play"><span>플레이</span></i></a>
+                        </p>
+                    </div>
+                </section>
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>CSS3 Animation 효과 적용</li>
+                        <li>CSS class : show, hide, fade-in, fade-out 4가지 상태 적용</li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+        </div> <!-- #wrapper  -->
+        
+<script>
+'use strict';
+
+var numSlide = $('div.image-slide ul.slide li').length;
+var slideNow = 0;
+var slidePrev = 0;
+var slideNext = 0;
+var slideFirst = 3;
+var timerId = null;
+var isTimerOn = true;
+var timerSpeed = 4000;
+var onAnimation = false;
+
+// 초기화
+$('div.image-slide ul.slide li').each(function(i) {
+    $('div.image-slide ul.indicator').append('<li><a href="#">' + (i + 1) + '번 슬라이드</a></li>\n');
+});
+if (isTimerOn === true) {
+    $('div.image-slide p.control a.play').addClass('on');
+} else {
+    $('div.image-slide p.control a.play').removeClass('on');
+}
+showSlide(slideFirst);
+
+$('div.image-slide ul.indicator li a').on('click', function() {
+    var index = $('div.image-slide ul.indicator li').index($(this).parent());
+    showSlide(index + 1);
+});
+$('div.image-slide p.control a.prev').on('click', function() {
+    $(this).find('img').stop(true).animate({'left': '-10px'}, 50).animate({'left': 0}, 100);
+    showSlide(slidePrev);
+});
+$('div.image-slide p.control a.next').on('click', function() {
+    $(this).find('img').stop(true).animate({'right': '-10px'}, 50).animate({'right': 0}, 100);
+    showSlide(slideNext);
+});
+$('div.image-slide p.control a.play').on('click', function() {
+    if (isTimerOn === true) {
+        clearTimeout(timerId);
+        $(this).removeClass('on');
+        isTimerOn = false;
+    } else {
+        timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+        $(this).addClass('on');
+        isTimerOn = true;
+    }
+});
+    
+function showSlide(n) {
+    if (slideNow === n || onAnimation === true) return false;
+    onAnimation = true;
+    clearTimeout(timerId);
+    if (slideNow === 0) {
+        $('div.image-slide ul.slide li').attr({'class': 'hide'});
+        $('div.image-slide ul.slide li:eq(' + (n - 1) + ')').attr({'class': 'show'});
+        onAnimation = false;
+    } else {
+        $('div.image-slide ul.slide li:eq(' + (slideNow - 1) + ')').attr({'class': 'fade-out'}).one('animationend', function() {
+            $(this).attr({'class': 'hide'});
+            onAnimation = false;
+        });
+        $('div.image-slide ul.slide li:eq(' + (n - 1) + ')').attr({'class': 'fade-in'});
+    }
+    $('div.image-slide ul.indicator li').removeClass('on');
+    $('div.image-slide ul.indicator li:eq(' + (n - 1) + ')').addClass('on');
+    slideNow = n;
+    slidePrev = (n <= 1) ? numSlide : (n - 1);
+    slideNext = (n >= numSlide) ? 1 : (n + 1);
+    //console.log(slidePrev + ' / ' + slideNow + ' / ' + slideNext);
+    if (isTimerOn === true) {
+        timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+    }
+}
+
+</script>
+    </body>
+</html>
+
+

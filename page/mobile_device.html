@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>모바일 Device API | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : 모바일 Device API" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/mobile_device.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub mobile-multi zoom">
+        <div id="wrapper">
+            
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>모바일 Device API</h2>
+                    
+                    <ul class="api">
+                        <li>파일첨부(1개) : <br /><input type="file" /></li>
+                        <li>파일첨부(복수) : <br /><input type="file" multiple="multiple" /></li>
+                        <li><a href="sms:010-5179-6455" class="btn">문자보내기</a></li>
+                        <li><a href="tel:010-5179-6455" class="btn">전화걸기</a></li>
+                    </ul>
+                    
+                </section>
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>UI 함수화 및 파라미터 설정 기능 적용</li>
+                        <li>다수의 UI 적용</li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+                
+        </div> <!-- #wrapper  -->
+        
+<script>
+'use strict';
+
+applyZoom('div.content-box');
+
+function applyZoom(selector) {
+    var startDist = 0;
+    var delDist = 0;
+    var scaleNow = 1;
+    var scalePrev = 1;
+    var scaleMin = 1;
+    
+    $(selector).on('touchstart', function(e) {
+        //$('div.event-type').append('<span>' + (scalePrev * width) +'</span> ');
+        if (e.touches.length >= 2) {
+            e.preventDefault();
+            var coorX1 = e.touches[0].clientX;
+            var coodY1 = e.touches[0].clientY;
+            var coorX2 = e.touches[1].clientX;
+            var coodY2 = e.touches[1].clientY;
+            startDist = Math.sqrt(Math.pow(coorX2 - coorX1, 2) + Math.pow(coodY2 - coodY1, 2));
+            //$('div.event-type').append('<span>' + startDist +'</span> ');
+            $(document).on('touchmove', function(e) {
+                var coorX1 = e.touches[0].clientX;
+                var coodY1 = e.touches[0].clientY;
+                var coorX2 = e.touches[1].clientX;
+                var coodY2 = e.touches[1].clientY;
+                delDist = Math.sqrt(Math.pow(coorX2 - coorX1, 2) + Math.pow(coodY2 - coodY1, 2));
+                scaleNow = scalePrev * (delDist / startDist);
+                if (scaleNow < scaleMin) scaleNow = scaleMin;
+                $(selector).find('img').css({'transform': 'scale(' + scaleNow + ')'});
+                $('div.event-type').append('<span>' + scaleNow +'</span> ');
+            });
+            
+            $(document).on('touchend', function() {
+                scalePrev = scaleNow;
+                $(document).off('touchmove touchend');
+            });
+        }
+    });
+}
+    
+</script>
+    </body>
+</html>
+
+

@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    ul.popup-button {margin: 50px;}
+    ul.popup-button li + li {margin-top: 30px;}
+    ul.popup-button li a {display: block; width: 200px; line-height: 50px; font-size: 20px; text-align: center; border: 1px solid #e0e0e0; border-radius: 10px;}
+    
+    #layer-mask {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000;}
+    div.layer-popup {position: fixed; width: 600px; height: 400px; max-width: 90%; max-height: 90%; left: 50%; top: 50%; transform: translate(-50%, -50%); background: #ffffff; box-sizing: border-box; padding: 50px 0 25px 0; z-index: 1001; box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.4); display: none;}
+    div.layer-popup div.header {position: absolute; left: 0; top: 0; width: 100%; line-height: 50px; background: linear-gradient(154deg, #008fe2 0, #00b29c 100%); color: #ffffff; box-sizing: border-box; padding: 0 30px;}
+    div.layer-popup div.header h3 {font-size: 20px;}
+    div.layer-popup div.header a.close {position: absolute; right: 30px; top: 0; font-size: 24px;}
+    div.layer-popup div.body {height: 100%; box-sizing: border-box; overflow: auto; padding: 20px;}
+    div.layer-popup div.body h4 {font-size: 18px; margin-top: 40px; margin-bottom: 20px; padding-left: 25px; position: relative;}
+    div.layer-popup div.body h4:first-child {margin-top: 0;}
+    div.layer-popup div.body h4:before {content: ''; position: absolute; left: 0; top: 50%; transform: translate(0, -50%); width: 8px; height: 8px; border: 3px solid #008fe2; border-radius: 20px;}
+    div.layer-popup div.footer {position: absolute; left: 0; bottom: 0; width: 100%; height: 25px; background: linear-gradient(154deg, #008fe2 0, #00b29c 100%);}
+    div.layer-popup div.footer p img {position: absolute; right: 20px; top: 50%; transform: translate(0, -50%); width: 60px;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    ul.popup-button {margin: 50px;}
+    ul.popup-button li + li {margin-top: 30px;}
+    ul.popup-button li a {display: block; width: 200px; line-height: 50px; font-size: 20px; text-align: center; border: 1px solid #e0e0e0; border-radius: 10px;}
+    
+    #layer-mask {position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 1000;}
+    div.layer-popup {position: fixed; width: 90% !important; height: 84% !important; left: 5%; top: 8%; background: #ffffff; box-sizing: border-box; padding: 50px 0 25px 0; z-index: 1001; box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.4); display: none;}
+    div.layer-popup div.header {position: absolute; left: 0; top: 0; width: 100%; line-height: 50px; background: linear-gradient(154deg, #008fe2 0, #00b29c 100%); color: #ffffff; box-sizing: border-box; padding: 0 30px;}
+    div.layer-popup div.header h3 {font-size: 20px;}
+    div.layer-popup div.header a.close {position: absolute; right: 30px; top: 0; font-size: 24px;}
+    div.layer-popup div.body {height: 100%; box-sizing: border-box; overflow: auto; padding: 20px;}
+    div.layer-popup div.body h4 {font-size: 18px; margin-top: 40px; margin-bottom: 20px; padding-left: 25px; position: relative;}
+    div.layer-popup div.body h4:first-child {margin-top: 0;}
+    div.layer-popup div.body h4:before {content: ''; position: absolute; left: 0; top: 50%; transform: translate(0, -50%); width: 8px; height: 8px; border: 3px solid #008fe2; border-radius: 20px;}
+    div.layer-popup div.footer {position: absolute; left: 0; bottom: 0; width: 100%; height: 25px; background: linear-gradient(154deg, #008fe2 0, #00b29c 100%);}
+    div.layer-popup div.footer p img {position: absolute; right: 20px; top: 50%; transform: translate(0, -50%); width: 60px;}
+}

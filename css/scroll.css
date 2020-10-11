@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    body {font-family: 'NotoSansKR', '맑은 고딕', 'malgun gothic', '돋움', Dotum, 'Apple SD Gothic Neo', Helvetica, sans-serif; font-weight: 400; font-size: 14px; color: #333333; background: #ffffff;}
+    body.no-bar {overflow: hidden;}
+    #wrapper {min-width: 850px; overflow: hidden; min-height: 500px;}
+    #skip-nav {position: fixed; left: 0; top: -36px; width: 100%; line-height: 35px; font-size: 16px; border-bottom: 1px solid #ffffff; color: #ffffff; background: #999999; background: rgba(0, 0, 0, 0.6); text-align: center; z-index: 10000; transition: top 0.3s;}
+    #skip-nav:focus {top: 0;}
+    #go-home {position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; font-size: 24px; text-align: center; line-height: 56px; border-radius: 100px; color: #ffffff; background: #ffcc00; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); z-index: 10000;}
+
+    #header {position: fixed; left: 0; top: 0; width: 100%; height: 100px; background: rgba(0, 0, 0, 0.6); z-index: 100; transition: all 0.5s;}
+    #header h1 {position: absolute; left: 30px; top: 50%; transform: translate(0, -50%); width: 180px; height: 56px;}
+    #header h1 img {width: 100%; position: absolute; left: 0; top: 0; opacity: 0; transition: all 0.5s;}
+    #header h1 img:first-child {opacity: 1;}
+    #gnb {color: #ffffff; font-size: 20px; position: absolute; right: 200px; top: 50%; transform: translate(0, -50%); transition: all 0.5s;}
+    #gnb ul li {float: left;}
+    #gnb ul li + li {margin-left: 80px;}
+    #header.on {height: 70px; background: #ffffff; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);}
+    #header.on h1 img {opacity: 0;}
+    #header.on h1 img + img {opacity: 1;}
+    #header.on #gnb {color: #666666; font-size: 16px;}
+    
+    @media screen and (max-width: 1200px) {
+        #gnb {right: 30px; font-size: 18px;}
+        #gnb ul li + li {margin-left: 50px;}
+    }
+
+    #main {position: relative;}
+    
+    #page-indicator {position: fixed; right: 30px; top: 50%; transform: translate(0, -50%); z-index: 100;}
+    #page-indicator li + li {margin-top: 20px;}
+    #page-indicator li a {display: block; width: 16px; height: 16px; border: 2px solid #ffffff; border-radius: 100px; overflow: hidden; text-indent: -999px; background: rgba(0, 0, 0, 0.3); box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);}
+    #page-indicator li.on a {background: #ffffff;}
+    
+    section.scroll-page {height: 100vh; position: relative; color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);}
+    section.scroll-page p.content {position: absolute; left: 50%; top: 50%; transform: translate(-80%, -50%); opacity: 0; transition: all 2s; border: 1px solid #e0e0e0;}
+    section.scroll-page p.content.show {transform: translate(-50%, -50%); opacity: 1;}
+    section.scroll-page.show p.content {transform: translate(-50%, -50%); opacity: 1;}
+    section#page1 {background: yellow;}
+    section#page2 {background: green;}
+    section#page3 {background: lime;}
+    section#page4 {background: red;}
+    section#page5 {background: gray;}
+    section#page6 {background: white;}
+    section#page7 {background: orange;}
+    
+    #aside {position: absolute; right: 50px; top: 150px; width: 100px; height: 400px; background: pink; border: 2px solid #000000; transition: top 0.3s;}
+    
+    #footer {position: relative;}
+    #footer p.copyright {line-height: 50px; font-size: 16px; text-align: center; color: #999999;}
+    #scroll-top {position: absolute; right: 100px; top: -30px; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 15px; background: #eeeeee; border-radius: 100px; z-index: 100;}
+    
+    ul.count {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;}
+    ul.count li {display: inline-block; min-width: 300px; font-size: 100px;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    body {font-family: 'NotoSansKR', '맑은 고딕', 'malgun gothic', '돋움', Dotum, 'Apple SD Gothic Neo', Helvetica, sans-serif; font-weight: 400; font-size: 14px; color: #333333; background: #ffffff;}
+    #wrapper{overflow: hidden; min-width: 320px; max-width: 850px; margin: 0 auto;}
+    #skip-nav {position: fixed; left: 0; top: -36px; width: 100%; line-height: 35px; font-size: 16px; border-bottom: 1px solid #ffffff; color: #ffffff; background: #999999; background: rgba(0, 0, 0, 0.6); text-align: center; z-index: 10000; transition: top 0.3s;}
+    #skip-nav:focus {top: 0;}
+    #go-home {position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; font-size: 24px; text-align: center; line-height: 56px; border-radius: 100px; color: #ffffff; background: #ffcc00; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); z-index: 10000;}
+
+    #header {position: fixed; left: 0; top: 0; width: 100%; height: 60px; background: rgba(0, 0, 0, 0.6); z-index: 100; transition: all 0.5s;}
+    #header h1 {position: absolute; left: 15px; top: 50%; transform: translate(0, -50%); width: 120px; height: 38px;}
+    #header h1 img {width: 100%; position: absolute; left: 0; top: 0; opacity: 0; transition: all 0.5s;}
+    #header h1 img:first-child {opacity: 1;}
+    #gnb {display: none;}
+    #gnb ul li {float: left;}
+    #gnb ul li + li {margin-left: 100px;}
+    #header.on {height: 50px; background: #ffffff; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);}
+    #header.on h1 img {opacity: 0;}
+    #header.on h1 img + img {opacity: 1;}
+    #header.on #gnb {color: #666666; font-size: 16px;}
+
+    #main {position: relative;}
+    
+    #page-indicator {position: fixed; right: 10px; top: 50%; transform: translate(0, -50%); z-index: 100;}
+    #page-indicator li + li {margin-top: 20px;}
+    #page-indicator li a {display: block; width: 12px; height: 12px; border: 1px solid #ffffff; border-radius: 100px; overflow: hidden; text-indent: -999px; background: rgba(0, 0, 0, 0.3); box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);}
+    #page-indicator li.on a {background: #ffffff;}
+    
+    section.scroll-page {height: 100vh; position: relative; color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);}
+    section.scroll-page p.content {position: absolute; left: 50%; top: 50%; transform: translate(-80%, -50%); width: 80%; opacity: 0; transition: all 2s; border: 1px solid #e0e0e0;}
+    section.scroll-page p.content.show {transform: translate(-50%, -50%); opacity: 1;}
+    section.scroll-page.show p.content {transform: translate(-50%, -50%); opacity: 1;}
+    section#page1 {background: yellow;}
+    section#page2 {background: green;}
+    section#page3 {background: lime;}
+    section#page4 {background: red;}
+    section#page5 {background: gray;}
+    section#page6 {background: white;}
+    section#page7 {background: orange;}
+    
+    #aside {position: absolute; right: 10px; top: 150px; width: 50px; height: 200px; background: pink; border: 1px solid #000000; transition: top 0.3s;}
+    
+    #footer {position: relative;}
+    #footer p.copyright {line-height: 30px; font-size: 12px; text-align: center; color: #999999;}
+    #scroll-top {position: absolute; left: 10px; top: -30px; width: 46px; height: 46px; line-height: 46px; text-align: center; font-size: 15px; background: #eeeeee; border-radius: 100px; z-index: 100;}
+    
+    ul.count {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;}
+    ul.count li {display: inline-block; min-width: 100px; font-size: 50px;}
+}
+
+
+
+body.step7 #main {position: relative; height: 100vh; perspective: 1000px;}
+body.step7 section.scroll-page {position: fixed; left: 0; top: 100%; width: 100%; height: 100%; color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); opacity: 0; overflow: hidden;}
+body.step7 section.scroll-page.show {opacity: 1; top: 0;}
+a.hidden {position: fixed; left: 0; width: 200px; height: 0; line-height: 30px; text-align: center; color: #ffffff; background: rgba(0, 0, 0, 0.5); overflow: hidden; transition: height 0.3s;}
+a.hidden:focus {height: 30px;}
+a.hidden.start {top: 0;}
+a.hidden.end {bottom: 30px;}
+section.scroll-page.show-up {animation: page-show-up 0.8s ease-out 0s 1 normal forwards;}
+section.scroll-page.show-down {animation: page-show-down 0.8s ease-out 0s 1 normal forwards;}
+section.scroll-page.hide-up {animation: page-hide-up 0.8s ease-out 0s 1 normal forwards;}
+section.scroll-page.hide-down {animation: page-hide-down 0.8s ease-out 0s 1 normal forwards;}
+section.scroll-page.up {animation: page-up 0.6s ease-out 0s 1 normal forwards;}
+section.scroll-page.down {animation: page-down 0.6s ease-out 0s 1 normal forwards;}
+
+#mask-animation {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 600px; max-width: 80%;}
+#mask-animation img {width: 100%;}
+
+
+
+
+/* animation */
+@keyframes page-show-up {
+    0% {opacity: 1; top: 100%;}
+    50% {opacity: 1; top: 110%; transform: rotateX(20deg);}
+    100% {opacity: 1; top: 0; transform: rotateX(0);}
+}
+@keyframes page-show-down {
+    0% {opacity: 1; top: -100%;}
+    50% {opacity: 1; top: -110%; transform: rotateX(-20deg);}
+    100% {opacity: 1; top: 0; transform: rotateX(0);}
+}
+@keyframes page-hide-up {
+    0% {opacity: 1; top: 0; transform: scale(1) rotateX(0);}
+    50% {opacity: 1; top: 0; transform: scale(0.8) rotateX(0);}
+    100% {opacity: 0.5; top: -100%; transform: scale(0.8) rotateX(-20deg);}
+}
+@keyframes page-hide-down {
+    0% {opacity: 1; top: 0; transform: scale(1) rotateX(0);}
+    50% {opacity: 1; top: 0; transform: scale(0.8) rotateX(0);}
+    100% {opacity: 0.5; top: 100%; transform: scale(0.8) rotateX(20deg);}
+}
+@keyframes page-up {
+    0% {opacity: 1; top: 0;}
+    100% {opacity: 1; top: -300px;}
+}
+@keyframes page-down {
+    0% {opacity: 1; top: -300px;}
+    100% {opacity: 1; top: 0;}
+}

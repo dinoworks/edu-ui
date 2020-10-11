@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    div.drag-box {position: relative; height: 600px; border: 5px solid #e0e0e0;}
+    
+    div.drag-box a.box1 {position: absolute; left: 0; top: 0; width: 100px; height: 100px; background: blue; color: #ffffff; z-index: 10;}
+    div.drag-box a.box2 {position: absolute; left: 150px; top: 200px; width: 100px; height: 100px; background: red; color: #ffffff; z-index: 10;}
+    div.drag-box a.box1.on,
+    div.drag-box a.box2.on {z-index: 100; opacity: 0.8;}
+    
+    div.drag-box div.drop-zone1 {position: absolute; left: 0; bottom: 0; width: 200px; height: 200px; background: #e0e0e0;}
+    div.drag-box div.drop-zone2 {position: absolute; right: 0; bottom: 0; width: 200px; height: 200px; background: #e0e0e0;}
+    div.drag-box div.drop-zone1.on,
+    div.drag-box div.drop-zone2.on {background: #ffee00;}
+    
+    ul.board-list {overflow: hidden; border: 1px solid #e0e0e0;}
+    ul.board-list li {position: relative; height: 60px; background: #f9f9f9; overflow: hidden;}
+    ul.board-list li + li {border-top: 1px solid #e0e0e0;}
+    ul.board-list li > a {position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 10px 20px; background: #ffffff; z-index: 10;}
+    ul.board-list li > a em {display: block; font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    ul.board-list li > a span {font-size: 13px; color: #888888; margin-top: 5px;}
+    ul.board-list li p.function a {position: absolute; top: 0; width: 60px; height: 100%; text-align: center; font-size: 18px; color: #ffffff;}
+    ul.board-list li p.function a i {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    ul.board-list li p.function a.mark {background: lime; left: 0;}
+    ul.board-list li p.function a.read {background: yellow; right: 120px;}
+    ul.board-list li p.function a.mod {background: blue; right: 60px;}
+    ul.board-list li p.function a.del {background: #ff0000; right: 0;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    div.drag-box {position: relative; height: 600px; border: 5px solid #e0e0e0;}
+    
+    div.drag-box a.box1 {position: absolute; left: 0; top: 0; width: 100px; height: 100px; background: blue; color: #ffffff; z-index: 10;}
+    div.drag-box a.box2 {position: absolute; left: 40%; top: 200px; width: 100px; height: 100px; background: red; color: #ffffff; z-index: 10;}
+    div.drag-box a.box1.on,
+    div.drag-box a.box2.on {z-index: 100; opacity: 0.8;}
+    
+    div.drag-box div.drop-zone1 {position: absolute; left: 0; bottom: 0; width: 30%; height: 30%; background: #e0e0e0;}
+    div.drag-box div.drop-zone2 {position: absolute; right: 0; bottom: 0; width: 30%; height: 30%; background: #e0e0e0;}
+    div.drag-box div.drop-zone1.on,
+    div.drag-box div.drop-zone2.on {background: #ffee00;}
+    
+    ul.board-list {overflow: hidden; border: 1px solid #e0e0e0;}
+    ul.board-list li {position: relative; height: 60px; background: #f9f9f9; overflow: hidden;}
+    ul.board-list li + li {border-top: 1px solid #e0e0e0;}
+    ul.board-list li > a {position: absolute; left: 0; top: 0; width: 100%; height: 100%; box-sizing: border-box; padding: 10px 20px; background: #ffffff; z-index: 10;}
+    ul.board-list li > a em {display: block; font-size: 16px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    ul.board-list li > a span {font-size: 13px; color: #888888; margin-top: 5px;}
+    ul.board-list li p.function a {position: absolute; top: 0; width: 60px; height: 100%; text-align: center; font-size: 18px; color: #ffffff;}
+    ul.board-list li p.function a i {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    ul.board-list li p.function a.mark {background: lime; left: 0;}
+    ul.board-list li p.function a.read {background: yellow; right: 120px;}
+    ul.board-list li p.function a.mod {background: blue; right: 60px;}
+    ul.board-list li p.function a.del {background: #ff0000; right: 0;}
+}
+
+

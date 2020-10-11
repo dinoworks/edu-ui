@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    div.banner-slide {border: 1px solid #e0e0e0; width: 100%; position: relative; box-sizing: border-box; padding: 0 30px; margin-bottom: 30px;}
+    div.banner-slide > div.box {position: relative; overflow: hidden;}
+    div.banner-slide ul.banner {position: relative; overflow: hidden; width: 5000px;}
+    div.banner-slide ul.banner li {float: left; padding: 5px 10px;}
+    div.banner-slide ul.banner li a {display: block; width: 170px; border: 1px solid #f5f5f5;}
+    div.banner-slide ul.banner li a img {width: 100%;}
+    div.banner-slide p.control a.prev,
+    div.banner-slide p.control a.next {position: absolute; top: 0; width: 30px; height: 100%; box-sizing: border-box; color: #bbbbbb; font-size: 20px;}
+    div.banner-slide p.control a.prev {left: 0; border-right: 1px solid #e0e0e0;}
+    div.banner-slide p.control a.next {right: 0; border-left: 1px solid #e0e0e0;}
+    div.banner-slide p.control a.prev i,
+    div.banner-slide p.control a.next i {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    div.banner-slide p.control a.play {position: absolute; right: 35px; bottom: 2px; width: 20px; height: 20px; text-align: center; line-height: 18px; border: 1px solid #e0e0e0; background: #ffffff; box-sizing: border-box; font-size: 12px; color: #bbbbbb;}
+    div.banner-slide p.control a.play i:first-child {display: none;}
+    div.banner-slide p.control a.play.on i:first-child {display: inline-block;}
+    div.banner-slide p.control a.play.on i + i {display: none;}
+    div.banner-slide p.control a:hover {color: #999999;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    div.banner-slide {border: 1px solid #e0e0e0; width: 100%; position: relative; box-sizing: border-box; padding: 0 25px; margin-bottom: 50px;}
+    div.banner-slide > div.box {position: relative; overflow: hidden;}
+    div.banner-slide ul.banner {position: relative; overflow: hidden; width: 5000px;}
+    div.banner-slide ul.banner li {float: left; padding: 5px 8px;}
+    div.banner-slide ul.banner li a {display: block; width: 120px; border: 1px solid #f5f5f5;}
+    div.banner-slide ul.banner li a img {width: 100%;}
+    div.banner-slide p.control a.prev,
+    div.banner-slide p.control a.next {position: absolute; top: 0; width: 25px; height: 100%; box-sizing: border-box; color: #bbbbbb; font-size: 16px;}
+    div.banner-slide p.control a.prev {left: 0; border-right: 1px solid #e0e0e0;}
+    div.banner-slide p.control a.next {right: 0; border-left: 1px solid #e0e0e0;}
+    div.banner-slide p.control a.prev i,
+    div.banner-slide p.control a.next i {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);}
+    div.banner-slide p.control a.play {position: absolute; right: 30px; bottom: 2px; width: 20px; height: 20px; text-align: center; line-height: 18px; border: 1px solid #e0e0e0; background: #ffffff; box-sizing: border-box; font-size: 12px; color: #bbbbbb;}
+    div.banner-slide p.control a.play i:first-child {display: none;}
+    div.banner-slide p.control a.play.on i:first-child {display: inline-block;}
+    div.banner-slide p.control a.play.on i + i {display: none;}
+    div.banner-slide p.control a:hover {color: #999999;}
+}

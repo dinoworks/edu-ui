@@ -1,0 +1,116 @@
+@charset 'utf-8';
+
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    body {font-family: 'NotoSansKR', 'Noto Sans KR', '나눔고딕', '맑은 고딕', 'malgun gothic', '돋움', 'Dotum', 'Apple SD Gothic Neo', 'Helvetica', sans-serif; font-weight: 400; font-size: 13px; color: #333333; background: #ffffff;}
+    #wrapper {min-width: 1024px; overflow: hidden;}
+    #skip-nav {position: fixed; left: 0; top: -41px; width: 100%; line-height: 40px; text-align: center; font-size: 16px; color: #ffffff; background: rgba(0, 0, 0, 0.6); border-bottom: 1px solid #ffffff; z-index: 100000; transition: top 0.3s;}
+    #skip-nav:focus {top: 0;}
+    #go-home {position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; font-size: 24px; text-align: center; line-height: 56px; border-radius: 100px; color: #ffffff; background: #ffcc00; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); z-index: 10000;}
+    
+    #header {position: fixed; left: 0; top: 0; width: 100%; height: 100px; min-width: 1024px; background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)); color: #ffffff; z-index: 10000; transition: all 0.3s; box-sizing: border-box;}
+    #header:after {content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; animation: header-line 3s linear 0.5s 1 normal forwards;}
+    #header.white {height: 80px; background: #ffffff; color: #333333; box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1); border-bottom: 1px solid #e0e0e0;}
+    #header h1 {position: absolute; left: 50px; top: 22px; width: 220px;}
+    #header.white h1 {top: 16px;}
+    #header h1 img {width: 100%; transition: opacity 0.3s;}
+    #header h1 img + img {position: absolute; left: 0; top: 0; opacity: 0;}
+    #header.white h1 img {opacity: 0;}
+    #header.white h1 img + img {opacity: 1;}
+    #header.open:before {content: ''; position: absolute; left: 0; bottom: -80px; width: 100%; height: 80px; background: #5f5f6b;}
+    @keyframes header-line {
+        0% {width: 0; background: rgba(255, 255, 255, 0.1);}
+        50% {width: 50%; background: rgba(255, 255, 255, 0.8);}
+        100% {width: 100%; background: rgba(255, 255, 255, 0.3);}
+    }
+
+    #gnb {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 18px;}
+    #gnb > ul > li {float: left;}
+    #gnb > ul > li > a {transition: color 0.3s;}
+    #gnb > ul > li.on > a,
+    #gnb > ul > li > a:hover {color: #ffc20f;}
+    #gnb > ul > li + li {margin-left: 80px;}
+    #gnb > ul > li > ul {position: absolute; top: 90px; color: #ffffff; font-size: 16px; display: none;}
+    #header.white #gnb > ul > li > ul {top: 80px;}
+    #gnb > ul > li.sub1 > ul {left: 0; width: 800px;}
+    #gnb > ul > li.sub2 > ul {left: 0; width: 800px;}
+    #gnb > ul > li.sub3 > ul {left: 60px; width: 800px;}
+    #gnb > ul > li.sub5 > ul {right: 0;}
+    #gnb > ul > li > ul > li {float: left;}
+    #gnb > ul > li > ul > li + li:before {content: '|'; margin: 0 30px; font-size: 10px; color: #80808d; position: relative; top: -3px;}
+    #gnb > ul > li > ul > li > a {transition: color 0.3s;}
+    #gnb > ul > li > ul > li.on > a,
+    #gnb > ul > li > ul > li > a:hover {color: #ffc20f;}
+    #gnb span.bar {position: absolute; left: 0; bottom: -36px; width: 0; height: 4px; background: #ffc20f; transition: all 0.3s;}
+    #header.white #gnb span.bar {bottom: -26px;}
+    @media screen and (max-width: 1350px) {
+        #header h1 {width: 180px;}
+        #gnb {font-size: 16px;}
+        #gnb > ul > li + li {margin-left: 40px;}
+        #gnb > ul > li > ul {font-size: 14px;}
+        #gnb > ul > li > ul > li + li:before {margin: 0 20px;}
+    }
+
+    #top-menu {position: absolute; right: 50px; top: 50%; transform: translate(0, -50%);}
+    #top-menu > li {float: left;}
+    #top-menu > li + li {margin-left: 30px;}
+    #top-menu > li i {margin-right: 8px; position: relative; top: -1px;}
+    #top-menu a {transition: color 0.3s;}
+    #top-menu a:hover {color: #ffc20f;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    body {font-family: 'NotoSansKR', 'Noto Sans KR', '나눔고딕', '맑은 고딕', 'malgun gothic', '돋움', 'Dotum', 'Apple SD Gothic Neo', 'Helvetica', sans-serif; font-weight: 400; font-size: 12px; color: #3b3b3d; background: #ffffff;}
+    #wrapper {position: relative; overflow: hidden; max-width: 850px; margin: 0 auto; box-sizing: border-box; min-width: 320px; min-height: 100vh;}
+    #skip-nav {position: fixed; left: 0; top: -41px; width: 100%; line-height: 40px; font-size: 16px; text-align: center; background: rgba(0, 0, 0, 0.4); color: #ffffff; border-bottom: rgba(255, 255, 255, 0.8); z-index: 100000; transition: top 0.3s;}
+    #skip-nav:focus {top: 0;}
+    #go-home {position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; font-size: 24px; text-align: center; line-height: 56px; border-radius: 100px; color: #ffffff; background: #ffcc00; box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4); z-index: 10000;}
+
+    #header {position: fixed; left: 0; top: 0; width: 100%; height: 60px; background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2)); color: #ffffff; z-index: 10000; transition: all 0.3s; box-sizing: border-box;}
+    #header:after {content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; animation: header-line 3s linear 0.5s 1 normal forwards;}
+    #header.white {background: #ffffff; color: #333333; box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1); border-bottom: 1px solid #e0e0e0;}
+    #header h1 {position: absolute; left: 15px; top: 50%; width: 150px; line-height: 1em; transform: translate(0, -50%);}
+    #header h1 img {width: 100%; transition: opacity 0.3s;}
+    #header h1 img + img {position: absolute; left: 0; top: 0; opacity: 0;}
+    #header.white h1 img {opacity: 0;}
+    #header.white h1 img + img {opacity: 1;}
+    @keyframes header-line {
+        0% {width: 0; background: rgba(255, 255, 255, 0.1);}
+        50% {width: 50%; background: rgba(255, 255, 255, 0.8);}
+        100% {width: 100%; background: rgba(255, 255, 255, 0.3);}
+    }
+    #header a.menu {position: absolute; right: 15px; top: 50%; transform: translate(0, -50%); width: 34px; height: 24px;}
+    #header a.menu:before {content: ''; position: absolute; width: 100%; height: 2px; right: 0; top: 0; background: #ffffff; transform-origin: right top; transition: all 0.5s;}
+    #header a.menu span {position: absolute; width: 60%; height: 2px; right: 0; top: 50%; transform: translate(0, -50%); background: #ffffff; overflow: hidden; text-indent: -999px; transition: all 0.5s;}
+    #header a.menu:after {content: ''; position: absolute; width: 100%; height: 2px; right: 0; bottom: 0; background: #ffffff; transform-origin: right bottom; transition: all 0.5s;}
+    #header.white a.menu:before,
+    #header.white a.menu span,
+    #header.white a.menu:after {background: #666666;}
+    #header a.menu.open:before {transform: rotate(-36deg); width: 110%;}
+    #header a.menu.open span {opacity: 0;}
+    #header a.menu.open:after {transform: rotate(36deg); width: 110%;}
+
+    #gnb {position: fixed; right: -100%; top: 60px; width: 100%; height: calc(100% - 100px); box-sizing: border-box; background: #3c3c45; color: #ffffff; font-size: 14px; padding: 30px 30px 100px 30px; overflow: auto; z-index: 10000; transition: right 0.5s;}
+    #gnb.open {right: 0;}
+    #gnb > ul > li > a {display: block; position: relative; font-size: 16px; font-weight: 700; line-height: 44px; border-bottom: 2px solid #77777d;}
+    #gnb > ul > li.on > a {border-bottom-color: #ffc20f; color: #ffc20f;}
+    #gnb > ul > li > a i {position: absolute; right: 5px; top: 50%; transform: translate(0, -50%);}
+    #gnb > ul > li > ul {overflow: hidden; height: 0; transition: height 0.3s;}
+    #gnb > ul > li > ul > li {padding-left: 20px;}
+    #gnb > ul > li > ul > li:last-child {border-bottom: 2px solid #77777d;}
+    #gnb > ul > li > ul > li + li a {border-top: 1px solid #67676e;}
+    #gnb > ul > li > ul > li > a {position: relative; display: block; line-height: 40px;}
+    #gnb > ul > li > ul > li.on > a {color: #ffc20f;}
+    #gnb > ul > li > ul > li.on > a:after {content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: #ffc20f;}
+    #gnb > ul > li > ul > li > a i {position: absolute; right: 10px; top: 50%; transform: translate(0, -50%); opacity: 0.5;}
+
+    #top-menu {position: fixed; right: -100%; bottom: 0; width: 100%; height: 40px; background: #3c3c45; color: #ffffff; z-index: 10000; text-align: center; transition: right 0.5s;}
+    #top-menu.open {right: 0;}
+    #top-menu li {display: inline-block;}
+    #top-menu li + li {margin-left: 10px;}
+    #top-menu li a {display: block; line-height: 30px; width: 100px; border: 1px solid #ffc20f;}
+    #top-menu li a i {margin-right: 8px;}
+}

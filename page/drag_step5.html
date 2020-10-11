@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>Drag &amp; Drop (Step5) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : Drag &amp; Drop (Step5)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/drag_ui.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub drag step5">
+        <div id="wrapper">
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>Drag &amp; Drop (Step5)</h2>
+                    <div class="drag-box">
+                        <a href="#" class="drag box1">BOX1</a>
+                        <a href="drag_step5.html" class="drag box2">BOX2</a>
+                        <div class="drop-zone1" data-zone="A">Drop Zone A</div>
+                        <div class="drop-zone2" data-zone="B">Drop Zone B</div>
+                    </div>
+                </section>
+                
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>Step1에서 아래 기능 추가
+                            <ul>
+                                <li>Drop 기능 추가</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+        </div> <!-- #wrapper  -->
+<script>
+'use strict';
+
+setDrag('a.box1');
+setDrag('a.box2');
+
+function setDrag(selector, direction) {
+    var startX = 0;
+    var startY = 0;
+    var delX = 0;
+    var delY = 0;
+    var offsetX = 0;
+    var offsetY = 0;
+    var $dragBox = $(selector).closest('.drag-box');
+    var $dropZone1 = $dragBox.find('.drop-zone1');
+    var $dropZone2 = $dragBox.find('.drop-zone2');
+    var direction = (direction === undefined) ? 'xy' : direction;
+    var isOnBox = true;
+    var isTouched = false;
+    var isClickAllowed = true;
+    
+    $(selector).on('mousedown touchstart', function(e) {
+        e = (e.clientX === undefined) ? e.touches[0] : e;
+        startX = e.clientX;
+        startY = e.clientY;
+        offsetX = $(this).position().left;
+        offsetY = $(this).position().top;
+        $(selector).addClass('on');
+        isTouched = true;
+    }).on('click', function(e) {
+        if (isClickAllowed === false) {
+            e.preventDefault();
+            isClickAllowed = true;
+        }
+    });
+    
+    document.addEventListener('mousemove', move, {passive: false});
+    document.addEventListener('touchmove', move, {passive: false});
+
+    $(document).on('mouseup touchend', function(e) {
+        if (isTouched === true) {
+            if ($dropZone1.hasClass('on') === true) {
+                alert('Dropped on Zone A!');
+                $dropZone1.removeClass('on');
+            }
+            if ($dropZone2.hasClass('on') === true) {
+                alert('Dropped on Zone B!');
+                $dropZone2.removeClass('on');
+            }
+            $(selector).removeClass('on');
+            isTouched = false;
+        }
+    });
+    
+    $(selector).on('mouseenter', function() {
+        isOnBox = true;
+    }).on('mouseleave', function() {
+        isOnBox = false;
+    });
+    
+    $(window).on('resize', function() {
+        moveBoxTo();
+    });
+    
+    function move(e) {
+        if (isTouched === false) return false;
+        e.preventDefault();
+        e = (e.clientX === undefined) ? e.touches[0] : e;
+        delX = e.clientX - startX;
+        delY = e.clientY - startY;
+        switch (direction) {
+            case 'x': delY = 0; break;
+            case 'y': delX = 0; break;
+        }
+        moveBoxTo(offsetX + delX, offsetY + delY);
+        if (Math.abs(delX) > 10 || Math.abs(delY) > 10) isClickAllowed = false;
+
+        if (isOnDropZone($dropZone1, e) === true) {
+            $dropZone1.addClass('on');
+        } else {
+            $dropZone1.removeClass('on');
+        }
+        if (isOnDropZone($dropZone2, e) === true) {
+            $dropZone2.addClass('on');
+        } else {
+            $dropZone2.removeClass('on');
+        }
+    }
+    
+    function moveBoxTo(x, y) {
+        var offsetX = (x === undefined) ? $(selector).position().left : x;
+        var offsetY = (y === undefined) ? $(selector).position().top : y;
+        var maxOffsetX = $dragBox.innerWidth() - $(selector).outerWidth();
+        var maxOffsetY = $dragBox.innerHeight() - $(selector).outerHeight();
+        
+        if (offsetX < 0) {
+            offsetX = 0;
+        } else if (offsetX > maxOffsetX) {
+            offsetX = maxOffsetX;
+        }
+        if (offsetY < 0) {
+            offsetY = 0;
+        } else if (offsetY > maxOffsetY) {
+            offsetY = maxOffsetY;
+        }
+        $(selector).css({'left': offsetX + 'px', 'top': offsetY + 'px'});
+    }
+    
+    function isOnDropZone($dropZone, e) {
+        e = (e.clientX === undefined) ? e.touches[0] : e;
+        // drag-box 내부에서의 마우스 좌표
+        var maxOffsetX = $dragBox.innerWidth() - $(selector).outerWidth();
+        var maxOffsetY = $dragBox.innerHeight() - $(selector).outerHeight();
+        var coordX = $(document).scrollLeft() + e.clientX - $dragBox.offset().left;
+        var coordY = $(document).scrollTop() + e.clientY - $dragBox.offset().top;
+        
+        if (coordX < 0) coordX = 0;
+        if (coordX > maxOffsetX) coordX = maxOffsetX;
+        if (coordY < 0) coordY = 0;
+        if (coordY > maxOffsetY) coordY = maxOffsetY;
+        
+        var minDropX = $dropZone.position().left;
+        var maxDropX = $dropZone.position().left + $dropZone.outerWidth();
+        var minDropY = $dropZone.position().top;
+        var maxDropY = $dropZone.position().top + $dropZone.outerHeight();
+        // 마우스가 box 외부에 있는 경우에는 무시
+        if (isOnBox === true) {
+            if ((coordX >= minDropX && coordX <= maxDropX) && (coordY >= minDropY && coordY <= maxDropY)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+}
+    
+
+</script>
+    </body>
+</html>
+
+

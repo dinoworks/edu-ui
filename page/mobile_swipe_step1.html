@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
+        <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
+        <title>모바일 Swipe (Step1) | 디노웍스(주) UI 라이브러리</title>
+        <meta name="description" content="디노웍스(주) UI 라이브러리 : 모바일 Swipe (Step1)" />
+        <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="../fa/css/all.min.css" rel="stylesheet" />
+        <link href="../css/web_font.css" rel="stylesheet" />
+        <link href="../css/style_pc.css" rel="stylesheet" media="screen and (min-width : 851px)" />
+        <link href="../css/style_mobile.css" rel="stylesheet" media="screen and (max-width : 850px)" />
+        <link href="../css/mobile_swipe.css" rel="stylesheet" />
+        <script src="../js/jquery-3.5.1.min.js"></script>
+        <script src="../js/dino_common.js"></script>
+    </head>
+    <body class="sub mobile-swipe step1">
+        <div id="wrapper">
+            
+            <a href="#main" id="skip-nav">본문 바로가기</a>
+            <header id="header">
+                <h1><a href="../index.html"><img alt="DinoWorks(디노웍스)" src="../img/logo.png" /></a></h1>
+            </header>
+            
+            <main id="main">
+                <section class="ui-sample">
+                    <h2>모바일 Swipe (Step1)</h2>
+                    
+                    <div class="mobile-swipe">
+                        <p class="dummy"><img alt="" src="../img/swipe/main_visual_01.jpg" /></p>
+                        <ul class="slide">
+                            <li><a href="#"><img alt="아시아나항공 기내면세점 정식입점 EVENT. CELL BLOOM 색동날개를 달다" src="../img/swipe/main_visual_11.jpg" /></a></li>
+                            <li><a href="#"><img alt="HAPPY MAY DAY(5월 가정의 달 이벤트). 7만원이상 고매고객 : 블룸블룸 KIT, 15만원 이상 구매고객 : 블룸 KIT + 플라워박스" src="../img/swipe/main_visual_12.jpg" /></a></li>
+                            <li><a href="#"><img alt="셀블룸 5종 샘플 증정 이벤트. Be a Bloomer, Get Samples. 2017. 3. 6 ~" src="../img/swipe/main_visual_09.jpg" /></a></li>
+                            <li><a href="#"><img alt="세포의 힘을 키워 아름다움을 깨우다" src="../img/swipe/main_visual_01.jpg" /></a></li>
+                            <li><a href="#"><img alt="낮과 밤이 다른 맞춤처방 화장품" src="../img/swipe/main_visual_02.jpg" /></a></li>
+                            <li><a href="#"><img alt="진피부터 관리하는 인사이트 케어" src="../img/swipe/main_visual_03.jpg" /></a></li>
+                            <li><a href="#"><img alt="Merry Bloomers 셀블룸 크리스마스 이벤트" src="../img/swipe/main_visual_05.jpg" /></a></li>
+                            <li><a href="#"><img alt="New Year CELLebration" src="../img/swipe/main_visual_06.jpg" /></a></li>
+                        </ul>
+                        <ul class="indicator">
+                            <!-- 자동 생성 -->
+                        </ul>
+                        <p class="control">
+                            <a href="#" class="prev"><img alt="이전" src="../img/swipe/btn_left.png" /></a>
+                            <a href="#" class="next"><img alt="다음" src="../img/swipe/btn_right.png" /></a>
+                            <a href="#" class="play"><i class="fas fa-pause"><span>정지</span></i><i class="fas fa-play"><span>플레이</span></i></a>
+                            <span class="bar"></span>
+                        </p>
+                    </div>
+                    
+                </section>
+                <section class="desc">
+                    <h2>설명</h2>
+                    <ul>
+                        <li>UI 함수화 및 파라미터 설정 기능 적용</li>
+                        <li>다수의 UI 적용</li>
+                    </ul>
+                </section>
+            </main>
+            
+            <footer id="footer">
+                <a href="../index.html" id="go-home" title="홈 화면"><i class="fas fa-home"></i></a>
+                <p class="copyright">2020 DinoWorks Inc.</p>
+            </footer>
+                
+        </div> <!-- #wrapper  -->
+        
+<script>
+'use strict';
+
+
+setImageSlide('div.mobile-swipe', 1, true, 3000);
+
+function setImageSlide(selector, first, status, speed) {
+    var numSlide = $(selector).find('ul.slide li').length;
+    var slideNow = 0;
+    var slidePrev = 0;
+    var slideNext = 0;
+    var slideFirst = first;
+    var timerId = null;
+    var isTimerOn = status;
+    var timerSpeed = speed;
+    var startX = 0;
+    var delX = 0;
+    var offsetX = 0;
+
+    // 초기화
+    $(selector).find('ul.slide li').each(function(i) {
+        $(this).css({'left': (i * 100) + '%', 'display': 'block'});
+        $(selector).find('ul.indicator').append('<li><a href="#">' + (i + 1) + '번 슬라이드</a></li>\n');
+    });
+    if (isTimerOn === true) {
+        $(selector).find('p.control a.play').addClass('on');
+    } else {
+        $(selector).find('p.control a.play').removeClass('on');
+    }
+    showSlide(slideFirst);
+
+    $(selector).find('ul.indicator li a').on('click', function() {
+        var index = $(selector).find('ul.indicator li').index($(this).parent());
+        showSlide(index + 1);
+    });
+    $(selector).find('p.control a.prev').on('click', function() {
+        $(this).find('img').stop(true).animate({'left': '-10px'}, 50).animate({'left': 0}, 100);
+        showSlide(slidePrev);
+    });
+    $(selector).find('p.control a.next').on('click', function() {
+        $(this).find('img').stop(true).animate({'right': '-10px'}, 50).animate({'right': 0}, 100);
+        showSlide(slideNext);
+    });
+    $(selector).find('p.control a.play').on('click', function() {
+        if (isTimerOn === true) {
+            clearTimeout(timerId);
+            $(selector).find('p.control span.bar').stop(true).css({'width': 0});
+            $(this).removeClass('on');
+            isTimerOn = false;
+        } else {
+            timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+            $(selector).find('p.control span.bar').stop(true).animate({'width': '100%'}, timerSpeed);
+            $(this).addClass('on');
+            isTimerOn = true;
+        }
+    });
+    
+    // swipe
+    $(selector).find('ul.slide').on('touchstart', function(e) {
+        e.preventDefault();
+        clearTimeout(timerId);
+        $(selector).find('p.control span.bar').stop(true).css({'width': 0});
+        $(selector).find('ul.slide').css({'transition': 'none'});
+        startX = e.touches[0].clientX;
+        offsetX = $(this).position().left;
+        $(document).on('touchmove', function(e) {
+            delX = e.touches[0].clientX - startX;
+            if ((slideNow === 1 && delX > 0) || (slideNow === numSlide && delX < 0)) {
+                delX = delX / 10;
+            }
+            $(selector).find('ul.slide').css({'left': (offsetX + delX) + 'px'});
+        });
+        $(document).on('touchend', function() {
+            $(document).off('touchmove touchend');
+            if (delX < -50 && slideNow !== numSlide) {
+                showSlide(slideNext);
+            } else if (delX > 50 && slideNow !== 1) {
+                showSlide(slidePrev);
+            } else {
+                showSlide(slideNow);
+            }
+        });
+    });
+    
+
+    function showSlide(n) {
+        clearTimeout(timerId);
+        $(selector).find('p.control span.bar').stop(true).css({'width': 0});
+        if (slideNow === 0) {
+            $(selector).find('ul.slide').css({'transition': 'none', 'left': -((n - 1) * 100) + '%'});
+        } else {
+            $(selector).find('ul.slide').css({'transition': 'left 0.3s', 'left': -((n - 1) * 100) + '%'});
+        }
+        $(selector).find('ul.indicator li').removeClass('on');
+        $(selector).find('ul.indicator li:eq(' + (n - 1) + ')').addClass('on');
+        slideNow = n;
+        slidePrev = (n - 1) < 1 ? numSlide : n - 1;
+        slideNext = (n + 1) > numSlide ? 1 : n + 1;
+        //console.log(slidePrev + ' / ' + slideNow + ' / ' + slideNext);
+        if (isTimerOn === true) {
+            timerId = setTimeout(function() {showSlide(slideNext);}, timerSpeed);
+            $(selector).find('p.control span.bar').stop(true).animate({'width': '100%'}, timerSpeed);
+        }
+    }
+}
+    
+    
+</script>
+    </body>
+</html>
+
+

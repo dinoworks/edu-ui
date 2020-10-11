@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* PC용 CSS */
+@media screen and (min-width: 851px) {
+    /* banner-infinite */
+    div.banner-infinite {position: relative; margin: 100px; background: yellow;}
+    div.banner-infinite > div.box {position: relative; overflow: hidden; padding: 30px 0;}
+    div.banner-infinite ul.banner {position: relative; width: 10000px; background: lime;}
+    div.banner-infinite ul.banner:after {content: ''; display: block; clear: both;}
+    div.banner-infinite ul.banner li {position: relative; width: 300px; height: 200px; overflow: hidden; float: left; transition: transform 1s; margin-right: 50px;}
+    div.banner-infinite ul.banner li.on {transform: scale(1.2);}
+    div.banner-infinite ul.banner li a {position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+    div.banner-infinite ul.banner li a img {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 100%;}
+    div.banner-infinite ul.banner li a em {position: absolute; left: 0; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #ffffff; text-align: center; font-size: 14px; padding: 10px 0;}
+
+    div.banner-infinite ul.indicator {position: absolute; left: 0; bottom: 0; width: 100%; line-height: 30px; background: rgba(0, 0, 0, 0.3); text-align: center;}
+    div.banner-infinite ul.indicator li {display: inline-block; vertical-align: middle;}
+    div.banner-infinite ul.indicator li + li {margin-left: 10px;}
+    div.banner-infinite ul.indicator li a {display: block; width: 10px; height: 10px; border: 2px solid #ffffff; border-radius: 20px; background: rgba(0, 0, 0, 0.5); text-indent: -999px; overflow: hidden;}
+    div.banner-infinite ul.indicator li.on a {background: #ffffff;}
+    div.banner-infinite a.play {color: #ffffff; position: absolute; right: 20px; bottom: 10px;}
+    div.banner-infinite a.play i:first-child {display: none;}
+    div.banner-infinite a.play i + i {display: inline-block;}
+    div.banner-infinite a.play.on i:first-child {display: inline-block;}
+    div.banner-infinite a.play.on i + i {display: none;}
+    div.banner-infinite a.prev,
+    div.banner-infinite a.next {position: absolute; top: 50%; transform: translate(0, -50%);}
+    div.banner-infinite a.prev {left: -60px;}
+    div.banner-infinite a.next {right: -60px;}
+}
+
+
+/* mobile용 CSS */
+@media screen and (max-width: 850px) {
+    /* banner-infinite */
+    div.banner-infinite {position: relative; margin: 100px; background: yellow;}
+    div.banner-infinite > div.box {position: relative; overflow: hidden; padding: 30px 0;}
+    div.banner-infinite ul.banner {position: relative; width: 10000px; background: lime;}
+    div.banner-infinite ul.banner:after {content: ''; display: block; clear: both;}
+    div.banner-infinite ul.banner li {position: relative; width: 300px; height: 200px; overflow: hidden; float: left; transition: transform 1s; margin-right: 50px;}
+    div.banner-infinite ul.banner li.on {transform: scale(1.2);}
+    div.banner-infinite ul.banner li a {position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+    div.banner-infinite ul.banner li a img {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); height: 100%;}
+    div.banner-infinite ul.banner li a em {position: absolute; left: 0; bottom: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #ffffff; text-align: center; font-size: 14px; padding: 10px 0;}
+
+    div.banner-infinite ul.indicator {position: absolute; left: 0; bottom: 0; width: 100%; line-height: 30px; background: rgba(0, 0, 0, 0.3); text-align: center;}
+    div.banner-infinite ul.indicator li {display: inline-block; vertical-align: middle;}
+    div.banner-infinite ul.indicator li + li {margin-left: 10px;}
+    div.banner-infinite ul.indicator li a {display: block; width: 10px; height: 10px; border: 2px solid #ffffff; border-radius: 20px; background: rgba(0, 0, 0, 0.5); text-indent: -999px; overflow: hidden;}
+    div.banner-infinite ul.indicator li.on a {background: #ffffff;}
+    div.banner-infinite a.play {color: #ffffff; position: absolute; right: 20px; bottom: 10px;}
+    div.banner-infinite a.play i:first-child {display: none;}
+    div.banner-infinite a.play i + i {display: inline-block;}
+    div.banner-infinite a.play.on i:first-child {display: inline-block;}
+    div.banner-infinite a.play.on i + i {display: none;}
+    div.banner-infinite a.prev,
+    div.banner-infinite a.next {position: absolute; top: 50%; transform: translate(0, -50%);}
+    div.banner-infinite a.prev {left: -60px;}
+    div.banner-infinite a.next {right: -60px;}
+}
+
