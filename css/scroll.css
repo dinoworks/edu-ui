@@ -20,19 +20,20 @@
     #header.on h1 img {opacity: 0;}
     #header.on h1 img + img {opacity: 1;}
     #header.on #gnb {color: #666666; font-size: 16px;}
-    
+
     @media screen and (max-width: 1200px) {
         #gnb {right: 30px; font-size: 18px;}
         #gnb ul li + li {margin-left: 50px;}
     }
 
-    #main {position: relative;}
-    
+    #main {position: relative; padding: 0;}
+    #main > section + section {margin: 0;}
+
     #page-indicator {position: fixed; right: 30px; top: 50%; transform: translate(0, -50%); z-index: 100;}
     #page-indicator li + li {margin-top: 20px;}
     #page-indicator li a {display: block; width: 16px; height: 16px; border: 2px solid #ffffff; border-radius: 100px; overflow: hidden; text-indent: -999px; background: rgba(0, 0, 0, 0.3); box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);}
     #page-indicator li.on a {background: #ffffff;}
-    
+
     section.scroll-page {height: 100vh; position: relative; color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);}
     section.scroll-page p.content {position: absolute; left: 50%; top: 50%; transform: translate(-80%, -50%); opacity: 0; transition: all 2s; border: 1px solid #e0e0e0;}
     section.scroll-page p.content.show {transform: translate(-50%, -50%); opacity: 1;}
@@ -44,13 +45,13 @@
     section#page5 {background: gray;}
     section#page6 {background: white;}
     section#page7 {background: orange;}
-    
+
     #aside {position: absolute; right: 50px; top: 150px; width: 100px; height: 400px; background: pink; border: 2px solid #000000; transition: top 0.3s;}
-    
+
     #footer {position: relative;}
     #footer p.copyright {line-height: 50px; font-size: 16px; text-align: center; color: #999999;}
     #scroll-top {position: absolute; right: 100px; top: -30px; width: 60px; height: 60px; line-height: 60px; text-align: center; font-size: 15px; background: #eeeeee; border-radius: 100px; z-index: 100;}
-    
+
     ul.count {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;}
     ul.count li {display: inline-block; min-width: 300px; font-size: 100px;}
 }
@@ -77,12 +78,12 @@
     #header.on #gnb {color: #666666; font-size: 16px;}
 
     #main {position: relative;}
-    
+
     #page-indicator {position: fixed; right: 10px; top: 50%; transform: translate(0, -50%); z-index: 100;}
     #page-indicator li + li {margin-top: 20px;}
     #page-indicator li a {display: block; width: 12px; height: 12px; border: 1px solid #ffffff; border-radius: 100px; overflow: hidden; text-indent: -999px; background: rgba(0, 0, 0, 0.3); box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.3);}
     #page-indicator li.on a {background: #ffffff;}
-    
+
     section.scroll-page {height: 100vh; position: relative; color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);}
     section.scroll-page p.content {position: absolute; left: 50%; top: 50%; transform: translate(-80%, -50%); width: 80%; opacity: 0; transition: all 2s; border: 1px solid #e0e0e0;}
     section.scroll-page p.content.show {transform: translate(-50%, -50%); opacity: 1;}
@@ -94,13 +95,13 @@
     section#page5 {background: gray;}
     section#page6 {background: white;}
     section#page7 {background: orange;}
-    
+
     #aside {position: absolute; right: 10px; top: 150px; width: 50px; height: 200px; background: pink; border: 1px solid #000000; transition: top 0.3s;}
-    
+
     #footer {position: relative;}
     #footer p.copyright {line-height: 30px; font-size: 12px; text-align: center; color: #999999;}
     #scroll-top {position: absolute; left: 10px; top: -30px; width: 46px; height: 46px; line-height: 46px; text-align: center; font-size: 15px; background: #eeeeee; border-radius: 100px; z-index: 100;}
-    
+
     ul.count {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%;}
     ul.count li {display: inline-block; min-width: 100px; font-size: 50px;}
 }
