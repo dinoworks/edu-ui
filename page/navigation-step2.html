@@ -222,6 +222,7 @@
 
       // 반응형 전환시 처리
       $(window).on('resize', function () {
+        //console.log($('#header a.menu').css('display'));
         if ($(window).width() > 850) {
           $('#gnb > ul > li > ul').css({
             'display': 'none'

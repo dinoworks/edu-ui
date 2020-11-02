@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="author" content="DinoWorks Inc. 디노웍스(주)" />
   <meta name="apple-mobile-web-app-title" content="디노웍스UI" />
-  <title>별점체크 (Half) | 디노웍스(주) UI 라이브러리</title>
-  <meta name="description" content="디노웍스(주) UI 라이브러리 : 별점체크 (Half)" />
+  <title>별점체크 (Full) | 디노웍스(주) UI 라이브러리</title>
+  <meta name="description" content="디노웍스(주) UI 라이브러리 : 별점체크 (Full)" />
   <link href="../favicon.ico" rel="shortcut icon" type="image/x-icon" />
   <link href="../fa/css/all.min.css" rel="stylesheet" />
   <link href="../css/web-font.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
 
     <main id="main">
       <section class="ui-sample">
-        <h2>별점체크 (Half)</h2>
+        <h2>별점체크 (Full)</h2>
 
         <form name="form1" action="../src/check_star.php" method="post">
           <ul class="movie-list">
@@ -59,21 +59,21 @@
               <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span
                   class="ir">0점</span></p>
               <input type="hidden" name="movie_seq[]" value="4" />
-              <input type="hidden" name="movie_score[]" value="2.5" />
+              <input type="hidden" name="movie_score[]" value="0" />
             </li>
             <li>
               <p class="poster"><img alt="000" src="../img/star/movie_05.jpg" /></p>
               <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span
                   class="ir">0점</span></p>
               <input type="hidden" name="movie_seq[]" value="2" />
-              <input type="hidden" name="movie_score[]" value="4.5" />
+              <input type="hidden" name="movie_score[]" value="0" />
             </li>
             <li>
               <p class="poster"><img alt="000" src="../img/star/movie_06.jpg" /></p>
               <p class="star"><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><a href="#">★</a><span
                   class="ir">0점</span></p>
               <input type="hidden" name="movie_seq[]" value="8" />
-              <input type="hidden" name="movie_score[]" value="3.5" />
+              <input type="hidden" name="movie_score[]" value="0" />
             </li>
             <li>
               <p class="poster"><img alt="000" src="../img/star/movie_07.jpg" /></p>
@@ -128,47 +128,27 @@
   <script>
     'use strict';
 
+
     setCheckStar('ul.movie-list li');
 
     function setCheckStar(selector) {
       $(selector).each(function () {
         var $selector = $(this).find('p.star');
         var $selectorScore = $(this).find('[name="movie_score[]"]');
-        var starPoint = parseFloat($selectorScore.val());
-        var scoreFloat = starPoint % 1;
-        var scoreInt = starPoint - scoreFloat;
-        // console.log(starPoint + ' / ' + scoreInt + ' / ' + scoreFloat);
+        var starPoint = Number($selectorScore.val());
 
         // 초기 상태 입력
-        $selector.find('a:eq(' + scoreInt + ')').prevAll().addClass('full');
-        if (scoreFloat === 0.5) {
-          $selector.find('a:eq(' + scoreInt + ')').addClass('half');
-        }
+        $selector.find('a:eq(' + starPoint + ')').prevAll().addClass('full');
         $selector.find('span.ir').text(starPoint + '점');
 
         // 별점 체크
         $selector.find('a').on('click', function (e) {
           e.preventDefault();
           e.stopPropagation();
-
-          var score = $selector.find('a').index($(this));
+          var score = $selector.find('a').index($(this)) + 1;
           $(this).prevAll().addClass('full');
-          if ($(this).attr('class') === 'full') {
-            $(this).attr({
-              'class': ''
-            });
-          } else if ($(this).attr('class') === 'half') {
-            $(this).attr({
-              'class': 'full'
-            });
-            score = score + 1;
-          } else {
-            $(this).attr({
-              'class': 'half'
-            });
-            score = score + 0.5;
-          }
-          $(this).nextAll().removeClass('full half');
+          $(this).addClass('full');
+          $(this).nextAll().removeClass('full');
           $selectorScore.val(score);
           $selector.find('span.ir').text(score + '점');
         });
@@ -182,25 +162,6 @@
         });
       });
     }
-
-
-    $('form[name="form1"]').on('submit', function (e) {
-      e.preventDefault();
-
-      var jsonData = '';
-      var data = {};
-      for (var i = 0; i < $('[name="movie_seq[]"]').length; i++) {
-        data[$('[name="movie_seq[]"]:eq(' + i + ')').val()] = parseFloat($('[name="movie_score[]"]:eq(' + i + ')')
-          .val());
-      }
-      //console.log(data);
-      //console.log(JSON.stringify(data));
-
-      var formData = new FormData();
-      formData.append('star_data', JSON.stringify(data));
-
-      e.currentTarget.submit();
-    });
   </script>
 </body>
 
